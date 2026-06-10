@@ -1,0 +1,29 @@
+/* ============================================
+   SCRIPT ASSIST THEME
+   Placeholder — fill in with actual brand values.
+   ============================================ */
+
+:root {
+  --color-primary: #2d6a4f;
+  --color-primary-hover: #1b4332;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #d8f3dc;
+  --color-secondary-hover: #b7e4c7;
+  --color-secondary-foreground: #1b4332;
+
+  --color-surface: #ffffff;
+  --color-surface-raised: #f8fdf9;
+
+  --color-border: #d3eadb;
+  --color-border-focus: #2d6a4f;
+
+  --color-text: #1b2d24;
+  --color-text-muted: #52796f;
+
+  --font-family: 'DM Sans', system-ui, sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}

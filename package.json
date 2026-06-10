@@ -1,0 +1,14 @@
+{
+  "name": "vezmaxwell-portfolio",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev:portfolio": "pnpm --filter portfolio dev",
+    "dev:storybook": "pnpm --filter @vez/ui storybook",
+    "build:ui": "pnpm --filter @vez/ui build",
+    "build:portfolio": "pnpm --filter portfolio build"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

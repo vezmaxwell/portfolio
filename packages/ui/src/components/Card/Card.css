@@ -1,0 +1,59 @@
+.vez-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Padding variants */
+.vez-card--padded {
+  padding: var(--space-6);
+}
+
+.vez-card--padded-sm {
+  padding: var(--space-4);
+}
+
+/* Elevation */
+.vez-card--elevated {
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.vez-card--flat {
+  border: none;
+  background-color: var(--color-surface-raised);
+}
+
+/* Sections */
+.vez-card__header {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vez-card__body {
+  padding: var(--space-6);
+}
+
+.vez-card__footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface-raised);
+}
+
+/* Title and subtitle inside header */
+.vez-card__title {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  line-height: var(--line-height);
+}
+
+.vez-card__subtitle {
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}

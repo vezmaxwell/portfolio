@@ -1,0 +1,30 @@
+/* ============================================
+   CAREHERO THEME
+   Placeholder — fill in with actual brand values.
+   ============================================ */
+
+:root {
+  --color-primary: #c0392b;
+  --color-primary-hover: #a93226;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #fdecea;
+  --color-secondary-hover: #fad7d3;
+  --color-secondary-foreground: #7b1f18;
+
+  --color-surface: #ffffff;
+  --color-surface-raised: #fdf8f8;
+
+  --color-border: #f5c6c2;
+  --color-border-focus: #c0392b;
+
+  --color-text: #2c1810;
+  --color-text-muted: #8b5e58;
+
+  --font-family: 'Nunito', system-ui, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
