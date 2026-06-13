@@ -1,5 +1,21 @@
 import type { Preview } from '@storybook/react';
 import '../src/themes/base.css';
+import '../src/themes/finity.css';
+import '../src/themes/script-assist.css';
+import '../src/themes/karehero.css';
+import '../src/themes/pictures.css';
+import '../src/themes/runna.css';
+
+if (typeof document !== 'undefined' && !document.getElementById('vez-fonts')) {
+  const link = document.createElement('link');
+  link.id = 'vez-fonts';
+  link.rel = 'stylesheet';
+  link.href =
+    'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=PT+Mono&family=PT+Serif:wght@400;700&display=swap';
+  document.head.appendChild(link);
+}
+
+const THEMES = ['base', 'finity', 'script-assist', 'karehero', 'pictures', 'runna'] as const;
 
 const preview: Preview = {
   parameters: {
@@ -9,6 +25,13 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      default: 'surface',
+      values: [
+        { name: 'surface', value: '#f7f7f7' },
+        { name: 'white', value: '#ffffff' },
+      ],
+    },
   },
   globalTypes: {
     theme: {
@@ -17,7 +40,7 @@ const preview: Preview = {
       toolbar: {
         title: 'Theme',
         icon: 'paintbrush',
-        items: ['base', 'finity', 'script-assist', 'carehero'],
+        items: [...THEMES],
         dynamicTitle: true,
       },
     },
@@ -25,15 +48,10 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme ?? 'base';
-      // Dynamically load the theme stylesheet
-      const existing = document.getElementById('vez-theme');
-      if (existing) existing.remove();
-      if (theme !== 'base') {
-        const link = document.createElement('link');
-        link.id = 'vez-theme';
-        link.rel = 'stylesheet';
-        link.href = `/themes/${theme}.css`;
-        document.head.appendChild(link);
+      if (theme === 'base') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
       }
       return Story();
     },

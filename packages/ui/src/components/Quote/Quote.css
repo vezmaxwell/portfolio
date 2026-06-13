@@ -1,0 +1,61 @@
+.vez-quote {
+  align-items: center;
+  background: var(--color-tint-1);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin: 0;
+  padding: var(--space-12) var(--space-8);
+  position: relative;
+  text-align: center;
+}
+
+.vez-quote__mark {
+  color: var(--color-tint-1-strong, var(--color-accent));
+  font-family: var(--font-family-display);
+  font-size: 96px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  position: absolute;
+}
+
+.vez-quote__mark--open {
+  left: var(--space-8);
+  top: var(--space-6);
+}
+
+.vez-quote__mark--close {
+  bottom: var(--space-2);
+  right: var(--space-8);
+}
+
+.vez-quote__body {
+  color: var(--color-text);
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing);
+  margin: 0;
+  max-width: 720px;
+}
+
+.vez-quote--md .vez-quote__body {
+  font-size: var(--font-size-display-sm);
+  line-height: var(--line-height-display-sm);
+}
+
+.vez-quote--lg .vez-quote__body {
+  color: var(--color-tint-1-strong, var(--color-accent));
+  font-size: 96px;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.vez-quote__attribution {
+  color: var(--color-text-muted);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-body);
+}

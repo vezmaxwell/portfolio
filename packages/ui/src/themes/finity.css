@@ -1,35 +1,19 @@
 /* ============================================
    FINITY THEME
-   Overrides base tokens to match Finity's brand.
-   Replace placeholder values with actual brand colours.
+   Dominant: Limelight + Rose.
    ============================================ */
 
-:root {
-  /* --- Colour --- */
-  --color-primary: #1a1a2e;
-  --color-primary-hover: #16213e;
-  --color-primary-foreground: #ffffff;
+[data-theme='finity'] {
+  --color-accent: var(--palette-chilli);
+  --color-accent-hover: var(--palette-chilli-dark);
+  --color-accent-foreground: var(--palette-off-white);
 
-  --color-secondary: #e8eaf6;
-  --color-secondary-hover: #d9dcf0;
-  --color-secondary-foreground: #1a1a2e;
-
-  --color-surface: #ffffff;
-  --color-surface-raised: #f5f5fb;
-
-  --color-border: #dde1f0;
-  --color-border-focus: #1a1a2e;
-
-  --color-text: #1a1a2e;
-  --color-text-muted: #6b7280;
-
-  /* --- Typography --- */
-  --font-family: 'Inter', system-ui, sans-serif;
-  --font-weight-medium: 500;
-  --font-weight-bold: 600;
-
-  /* --- Radius --- */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --color-tint-1: var(--palette-limelight);
+  --color-tint-1-strong: var(--palette-limelight-dark);
+  --color-tint-2: var(--palette-rose-light);
+  --color-tint-2-strong: var(--palette-rose-dark);
+  --color-tint-3: var(--palette-powder-blue);
+  --color-tint-3-strong: var(--palette-powder-blue-dark);
+  --color-tint-4: var(--palette-rose);
+  --color-tint-4-strong: var(--palette-rose-dark);
 }

@@ -1,0 +1,117 @@
+.vez-case-row {
+  align-items: stretch;
+  color: inherit;
+  display: flex;
+  gap: var(--space-4);
+  text-decoration: none;
+  width: 100%;
+}
+
+.vez-case-row--reverse {
+  flex-direction: row-reverse;
+}
+
+.vez-case-row > * {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* --- Text card --- */
+.vez-text-card {
+  background: var(--color-tint-1);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 464px;
+  padding: 36px;
+}
+
+.vez-text-card--outlined {
+  background: transparent;
+  border: 1px solid var(--color-border);
+}
+
+.vez-text-card--shape-rounded {
+  border-radius: var(--radius-lg);
+}
+
+.vez-text-card--shape-flush-left {
+  border-radius: var(--radius-xl) var(--radius-lg) var(--radius-lg) var(--radius-xl);
+}
+
+.vez-text-card--shape-flush-right {
+  border-radius: var(--radius-lg) var(--radius-xl) var(--radius-xl) var(--radius-lg);
+}
+
+.vez-text-card__title {
+  color: var(--color-text);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-display-sm);
+  margin: 0;
+}
+
+.vez-text-card__subtitle {
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-body);
+  margin: 16px 0 0 0;
+}
+
+/* --- Tag card --- */
+.vez-tag-card {
+  align-items: flex-end;
+  background: var(--color-tint-1-strong);
+  color: var(--color-text);
+  display: flex;
+  justify-content: flex-end;
+  min-height: 464px;
+  padding: 36px;
+}
+
+.vez-tag-card--shape-rounded {
+  border-radius: var(--radius-lg);
+}
+
+.vez-tag-card--shape-pill-top {
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.vez-tag-card--shape-pill-left {
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+}
+
+.vez-tag-card--shape-pill-right {
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+}
+
+.vez-tag-card__list {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  gap: var(--space-3);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-body);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .vez-case-row,
+  .vez-case-row--reverse {
+    flex-direction: column;
+  }
+  .vez-text-card,
+  .vez-tag-card {
+    min-height: 0;
+  }
+}

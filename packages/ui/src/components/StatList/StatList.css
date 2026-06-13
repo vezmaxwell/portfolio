@@ -1,0 +1,53 @@
+.vez-stat-list {
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+  padding: 36px;
+}
+
+.vez-stat-list--tint {
+  background: var(--color-tint-1);
+}
+
+.vez-stat-list__title {
+  color: var(--color-text);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-display-sm);
+  margin: 0;
+}
+
+.vez-stat-list__items {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  gap: var(--space-4);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-body);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vez-stat-list__item {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.vez-stat-list__label {
+  color: var(--color-text);
+}
+
+.vez-stat-list__value {
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+}

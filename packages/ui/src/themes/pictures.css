@@ -1,0 +1,19 @@
+/* ============================================
+   PICTURES THEME
+   Placeholder — designs to come. Neutral/charcoal.
+   ============================================ */
+
+[data-theme='pictures'] {
+  --color-accent: var(--palette-charcoal);
+  --color-accent-hover: var(--palette-charcoal-light);
+  --color-accent-foreground: var(--palette-off-white);
+
+  --color-tint-1: var(--palette-off-white-light);
+  --color-tint-1-strong: var(--palette-off-white-dark);
+  --color-tint-2: var(--palette-powder-blue-light);
+  --color-tint-2-strong: var(--palette-powder-blue-dark);
+  --color-tint-3: var(--palette-lilac-light);
+  --color-tint-3-strong: var(--palette-lilac-dark);
+  --color-tint-4: var(--palette-rose-light);
+  --color-tint-4-strong: var(--palette-rose-dark);
+}

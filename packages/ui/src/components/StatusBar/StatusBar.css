@@ -1,0 +1,53 @@
+/* ============================================
+   StatusBar — iOS-style. Fixed dimensions
+   designed for a 375px-wide phone screen.
+   Every number is intentional — do not scale.
+   ============================================ */
+
+.vez-statusbar {
+  align-items: center;
+  background: var(--statusbar-bg, transparent);
+  box-sizing: border-box;
+  color: #404042;
+  display: flex;
+  flex-shrink: 0;
+  font-family: var(--font-outfit, 'Outfit'), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  height: 47px;
+  justify-content: space-between;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.vez-statusbar__time {
+  font-variant-numeric: tabular-nums;
+}
+
+.vez-statusbar__icons {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+}
+
+.vez-statusbar__icon {
+  display: block;
+}
+
+.vez-statusbar__battery {
+  border: 1px solid #404042;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: block;
+  height: 11px;
+  padding: 1px;
+  width: 22px;
+}
+
+.vez-statusbar__battery-fill {
+  background: #404042;
+  border-radius: 1px;
+  display: block;
+  height: 100%;
+  width: 70%;
+}

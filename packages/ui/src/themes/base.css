@@ -1,42 +1,106 @@
 /* ============================================
    BASE TOKENS
-   The default values all components draw from.
-   Override any of these in a project theme.
+   Drawn from the Figma "My Projects" design system.
+   Project themes override --color-* roles by
+   pointing them at a different palette colour.
    ============================================ */
 
 :root {
-  /* --- Colour --- */
-  --color-primary: #111111;
-  --color-primary-hover: #333333;
-  --color-primary-foreground: #ffffff;
+  /* --- Palette --- */
+  --palette-charcoal: #1f1f1f;
+  --palette-charcoal-light: #3d3d3d;
+  --palette-off-white: #f7f7f7;
+  --palette-off-white-light: #e7e7e7;
+  --palette-off-white-dark: #a6a6a6;
+  --palette-white: #ffffff;
 
-  --color-secondary: #f4f4f4;
-  --color-secondary-hover: #e8e8e8;
-  --color-secondary-foreground: #111111;
+  --palette-powder-blue-light: #dae3fb;
+  --palette-powder-blue: #91aeff;
+  --palette-powder-blue-dark: #607fd6;
 
-  --color-surface: #ffffff;
-  --color-surface-raised: #f9f9f9;
+  --palette-limelight-light: #f9ffd0;
+  --palette-limelight: #f0ff91;
+  --palette-limelight-dark: #a5b53c;
 
-  --color-border: #e0e0e0;
-  --color-border-focus: #111111;
+  --palette-lilac-light: #f6e5ff;
+  --palette-lilac: #e3c6f3;
+  --palette-lilac-dark: #a885bb;
 
-  --color-text: #111111;
-  --color-text-muted: #666666;
-  --color-text-disabled: #aaaaaa;
+  --palette-rose-light: #ffe1e7;
+  --palette-rose: #ff9bad;
+  --palette-rose-dark: #dc6f83;
 
-  --color-error: #d32f2f;
-  --color-error-foreground: #ffffff;
+  --palette-chilli-light: #ffe5e3;
+  --palette-chilli: #e9463b;
+  --palette-chilli-dark: #b8352b;
 
-  /* --- Typography --- */
-  --font-family: system-ui, -apple-system, sans-serif;
+  /* --- Role mapping (the surface of the design system) --- */
+  --color-text: var(--palette-charcoal);
+  --color-text-muted: var(--palette-charcoal-light);
+  --color-text-disabled: var(--palette-off-white-dark);
+
+  --color-surface: var(--palette-off-white);
+  --color-surface-raised: var(--palette-white);
+  --color-surface-alt: var(--palette-off-white-light);
+
+  --color-border: var(--palette-off-white-light);
+  --color-border-strong: var(--palette-charcoal);
+  --color-border-focus: var(--palette-charcoal);
+
+  --color-primary: var(--palette-charcoal);
+  --color-primary-hover: var(--palette-charcoal-light);
+  --color-primary-foreground: var(--palette-off-white);
+
+  --color-secondary: var(--palette-off-white-light);
+  --color-secondary-hover: var(--palette-off-white-dark);
+  --color-secondary-foreground: var(--palette-charcoal);
+
+  --color-accent: var(--palette-chilli);
+  --color-accent-hover: var(--palette-chilli-dark);
+  --color-accent-foreground: var(--palette-off-white);
+
+  --color-error: var(--palette-chilli);
+  --color-error-foreground: var(--palette-off-white);
+
+  /* Tints used by case study cards. Each project theme can override
+     these with its preferred quartet from the palette. */
+  --color-tint-1: var(--palette-powder-blue-light);
+  --color-tint-1-strong: var(--palette-powder-blue);
+  --color-tint-2: var(--palette-limelight-light);
+  --color-tint-2-strong: var(--palette-limelight-dark);
+  --color-tint-3: var(--palette-lilac-light);
+  --color-tint-3-strong: var(--palette-lilac);
+  --color-tint-4: var(--palette-rose-light);
+  --color-tint-4-strong: var(--palette-chilli);
+
+  /* --- Typography ---
+     --font-serif / --font-mono are injected by next/font (in apps/portfolio/src/app/layout.tsx)
+     and fall back to Google-loaded values (Storybook uses a stylesheet link). */
+  --font-family-display: var(--font-serif, 'PT Serif'), Georgia, serif;
+  --font-family: var(--font-mono, 'PT Mono'), ui-monospace, 'SF Mono', Menlo, monospace;
+
   --font-size-xs: 12px;
   --font-size-sm: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 18px;
+  --font-size-body-small: 18px;
+  --font-size-md: 20px;
+  --font-size-lg: 24px;
+  --font-size-display-sm: 36px;
+  --font-size-display-md: 56px;
+  --font-size-display-lg: 90px;
+
+  --line-height-tight: 1.2;
+  --line-height: 1.4;
+  --line-height-body: 28px;
+  --line-height-body-large: 36px;
+  --line-height-display-sm: 50px;
+  --line-height-display-md: 76px;
+  --line-height-display-lg: 120px;
+
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
-  --line-height: 1.5;
+
+  --letter-spacing: 0.35px;
 
   /* --- Spacing --- */
   --space-1: 4px;
@@ -46,11 +110,17 @@
   --space-5: 20px;
   --space-6: 24px;
   --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
 
   /* --- Radius --- */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 40px;
+  --radius-xl: 80px;
+  --radius-pill: 1000px;
   --radius-full: 9999px;
 
   /* --- Shadows --- */
@@ -61,4 +131,22 @@
   /* --- Transitions --- */
   --transition-fast: 120ms ease;
   --transition-base: 200ms ease;
+
+  /* --- Layout --- */
+  --max-content-width: 1400px;
+  --page-padding: 40px;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-body);
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
 }

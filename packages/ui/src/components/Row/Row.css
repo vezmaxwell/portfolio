@@ -1,0 +1,25 @@
+.vez-row {
+  display: flex;
+  width: 100%;
+}
+
+.vez-row > * {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.vez-row--align-start {
+  align-items: flex-start;
+}
+.vez-row--align-center {
+  align-items: center;
+}
+.vez-row--align-stretch {
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .vez-row--collapsible {
+    flex-direction: column;
+  }
+}

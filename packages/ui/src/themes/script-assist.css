@@ -1,29 +1,73 @@
 /* ============================================
    SCRIPT ASSIST THEME
-   Placeholder — fill in with actual brand values.
+
+   Two layers:
+   - Portfolio container tokens (tints/accent) — colour
+     the case-study cards on the portfolio site.
+   - App-brand tokens (--app-*) — colour the interactive
+     in-portfolio prototypes that recreate the actual
+     Script Assist app surfaces. Values lifted from the
+     Figma at file X1XgglFJsFB6qQ9cwlYjVo / 2142:44231.
    ============================================ */
 
-:root {
-  --color-primary: #2d6a4f;
-  --color-primary-hover: #1b4332;
-  --color-primary-foreground: #ffffff;
+[data-theme='script-assist'] {
+  /* --- Portfolio container colour --- */
+  --color-accent: var(--palette-lilac-dark);
+  --color-accent-hover: var(--palette-chilli-dark);
+  --color-accent-foreground: var(--palette-off-white);
 
-  --color-secondary: #d8f3dc;
-  --color-secondary-hover: #b7e4c7;
-  --color-secondary-foreground: #1b4332;
+  --color-tint-1: var(--palette-lilac-light);
+  --color-tint-1-strong: var(--palette-lilac-dark);
+  --color-tint-2: var(--palette-powder-blue-light);
+  --color-tint-2-strong: var(--palette-powder-blue-dark);
+  --color-tint-3: var(--palette-powder-blue);
+  --color-tint-3-strong: var(--palette-powder-blue-dark);
+  --color-tint-4: var(--palette-lilac);
+  --color-tint-4-strong: var(--palette-lilac-dark);
 
-  --color-surface: #ffffff;
-  --color-surface-raised: #f8fdf9;
+  /* --- Script Assist app brand --- */
+  --app-primary: #3e4d7c;
+  --app-primary-hover: #2d3a64;
+  --app-primary-foreground: #ffffff;
+  --app-accent: #5b5fa9; /* progress bar, active tab, selected rating */
+  --app-accent-tint: #eef0fa; /* soft indigo wash for the evening check-in card */
 
-  --color-border: #d3eadb;
-  --color-border-focus: #2d6a4f;
+  --app-bg: #ffffff;
+  --app-bg-screen: #ffffff;         /* screen and cards both white — separation comes from the card shadow */
+  --app-bg-subtle: #fafafa;
+  --app-bg-nav: #f5f5fe; /* lavender top nav region */
 
-  --color-text: #1b2d24;
-  --color-text-muted: #52796f;
+  /* Make the Phone's iOS status bar blend with the app's
+     lavender nav so they read as a single header block. */
+  --statusbar-bg: #f5f5fe;
+  --app-bg-rating: #f0f0fc; /* default rating chip */
+  --app-bg-inline: #edeef0; /* inline notification box */
+  --app-bg-progress: #e5e5e5;
 
-  --font-family: 'DM Sans', system-ui, sans-serif;
+  /* Text neutrals — softened from pure charcoal so the
+     screen doesn't read as harsh. Hierarchy preserved:
+     headings darker than secondary, secondary darker
+     than tertiary. */
+  --app-text: #2e2e2e;
+  --app-text-strong: #2e2e2e;
+  --app-text-secondary: #606060;
+  --app-text-tertiary: #8a8a8a;
+  --app-border: #e1e3f0;
+  --app-border-input: #a3a3a3;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --app-tag-warning-bg: #ffebbe;
+  --app-tag-warning-border: #614b1b;
+  --app-tag-warning-fg: #614b1b;
+  --app-tag-active-bg: #fef9c3;
+  --app-tag-active-border: #854d0e;
+  --app-tag-active-fg: #854d0e;
+  --app-success: #16a34a;
+
+  --app-radius-xs: 4px;
+  --app-radius-sm: 8px;
+  --app-radius-md: 12px;
+  --app-radius-lg: 16px;
+  --app-radius-pill: 9999px;
+
+  --app-font: var(--font-outfit, 'Outfit'), system-ui, -apple-system, sans-serif;
 }

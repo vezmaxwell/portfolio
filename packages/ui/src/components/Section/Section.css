@@ -1,0 +1,22 @@
+.vez-section {
+  display: flex;
+  flex-direction: column;
+  padding-inline: var(--page-padding);
+  width: 100%;
+}
+
+.vez-section--sm {
+  padding-block: var(--space-8);
+}
+
+.vez-section--md {
+  padding-block: var(--space-10);
+}
+
+.vez-section--lg {
+  padding-block: var(--space-20);
+}
+
+.vez-section--center {
+  align-items: center;
+}

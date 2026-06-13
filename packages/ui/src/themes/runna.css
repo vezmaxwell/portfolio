@@ -1,0 +1,19 @@
+/* ============================================
+   RUNNA THEME
+   Dominant: Chilli Red.
+   ============================================ */
+
+[data-theme='runna'] {
+  --color-accent: var(--palette-chilli);
+  --color-accent-hover: var(--palette-chilli-dark);
+  --color-accent-foreground: var(--palette-off-white);
+
+  --color-tint-1: var(--palette-chilli-light);
+  --color-tint-1-strong: var(--palette-chilli);
+  --color-tint-2: var(--palette-chilli);
+  --color-tint-2-strong: var(--palette-chilli-dark);
+  --color-tint-3: var(--palette-rose-light);
+  --color-tint-3-strong: var(--palette-rose-dark);
+  --color-tint-4: var(--palette-charcoal);
+  --color-tint-4-strong: var(--palette-charcoal-light);
+}

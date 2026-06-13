@@ -1,0 +1,36 @@
+.vez-image-block {
+  align-items: center;
+  display: flex;
+  flex: 1 0 0;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  padding: var(--space-10);
+}
+
+.vez-image-block--shape-rounded {
+  border-radius: var(--radius-lg);
+}
+
+.vez-image-block--shape-flush-left {
+  border-radius: var(--radius-xl) var(--radius-lg) var(--radius-lg) var(--radius-xl);
+}
+
+.vez-image-block--shape-flush-right {
+  border-radius: var(--radius-lg) var(--radius-xl) var(--radius-xl) var(--radius-lg);
+}
+
+.vez-image-block__img {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.vez-image-block__img--contain {
+  object-fit: contain;
+}
+
+.vez-image-block__img--cover {
+  object-fit: cover;
+}

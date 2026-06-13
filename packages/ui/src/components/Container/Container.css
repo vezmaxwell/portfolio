@@ -1,0 +1,8 @@
+.vez-container {
+  margin-inline: auto;
+  width: 100%;
+}
+
+.vez-container--padded {
+  padding-inline: var(--page-padding);
+}
