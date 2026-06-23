@@ -1,0 +1,460 @@
+/* ============================================
+   Finity Worker Onboarding - mobile prototype.
+   Self-contained styling tuned to Finity's worker
+   app: white surfaces, near-black CTAs, orange
+   submit, task-checklist hub.
+   ============================================ */
+
+.fwo-app {
+  --fwo-bg: #ffffff;
+  --fwo-ink: #16191f;
+  --fwo-ink-2: #5c636e;
+  --fwo-ink-3: #8b909a;
+  --fwo-line: #e7e9ed;
+  --fwo-cta: #15181e;
+  --fwo-cta-hover: #2a2e36;
+  --fwo-orange: #f0975a;
+  --fwo-orange-hover: #e8843f;
+  --fwo-green: #1fae6a;
+  --fwo-radius: 10px;
+
+  background: var(--fwo-bg);
+  color: var(--fwo-ink);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  height: 100%;
+  line-height: 1.45;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Stack-pushed task page ── */
+.fwo-page {
+  background: var(--fwo-bg);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: absolute;
+  transition: transform 460ms cubic-bezier(0.32, 0.72, 0, 1);
+  will-change: transform;
+  z-index: 10;
+}
+
+.fwo-page__slide {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+
+/* ── Screen shell ── */
+.fwo-screen {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 18px 18px 18px;
+}
+
+/* ── Hub ── */
+.fwo-brand {
+  align-items: center;
+  color: var(--fwo-ink);
+  display: flex;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.fwo-brand__name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.fwo-hub-body {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.fwo-h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 0 0 6px;
+}
+
+.fwo-h2 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  margin: 0 0 14px;
+}
+
+.fwo-lead {
+  color: var(--fwo-ink-2);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
+
+/* ── Task list ── */
+.fwo-tasks {
+  border: 1px solid var(--fwo-line);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 14px 8px;
+}
+
+.fwo-tasks__caption {
+  color: var(--fwo-ink-3);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 10px 0 6px;
+}
+
+.fwo-task-row {
+  align-items: center;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--fwo-line);
+  color: var(--fwo-ink);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: 14px;
+  justify-content: space-between;
+  padding: 14px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.fwo-task-row:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.fwo-task-row__label {
+  font-weight: 500;
+}
+
+.fwo-task-row:not(:disabled):hover .fwo-task-row__label {
+  text-decoration: underline;
+}
+
+/* ── Status badges ── */
+.fwo-badge {
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 22px;
+  justify-content: center;
+  width: 22px;
+}
+
+.fwo-badge--ok {
+  background: var(--fwo-green);
+  color: #fff;
+}
+
+.fwo-badge--alert {
+  background: var(--fwo-ink);
+  color: #fff;
+}
+
+/* ── Task top bar ── */
+.fwo-topbar {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  margin-bottom: 18px;
+}
+
+.fwo-topbar__title {
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.fwo-back {
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--fwo-ink);
+  cursor: pointer;
+  display: inline-flex;
+  height: 36px;
+  justify-content: center;
+  margin-left: -7px;
+  padding: 0;
+  width: 36px;
+}
+
+.fwo-save {
+  background: none;
+  border: none;
+  color: var(--fwo-orange-hover);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  justify-self: end;
+  padding: 0;
+}
+
+.fwo-task-body {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.fwo-task-body::-webkit-scrollbar { display: none; }
+.fwo-task-body .fwo-h2 { margin-bottom: 0; }
+.fwo-task-body .fwo-lead { margin-bottom: 0; }
+
+/* ── Fields ── */
+.fwo-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fwo-field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.fwo-field-row .fwo-field {
+  flex: 1 1 0;
+}
+
+.fwo-label {
+  color: var(--fwo-ink);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.fwo-input {
+  background: var(--fwo-bg);
+  border: 1px solid var(--fwo-line);
+  border-radius: var(--fwo-radius);
+  color: var(--fwo-ink);
+  font-family: inherit;
+  font-size: 15px;
+  height: 46px;
+  outline: none;
+  padding: 0 13px;
+  transition: border-color 120ms ease;
+  width: 100%;
+}
+
+.fwo-input:focus {
+  border-color: var(--fwo-cta);
+}
+
+/* ── File upload ── */
+.fwo-upload {
+  align-items: center;
+  background: var(--fwo-bg);
+  border: 1px solid var(--fwo-line);
+  border-radius: var(--fwo-radius);
+  color: var(--fwo-ink);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  gap: 12px;
+  padding: 14px;
+  text-align: left;
+  width: 100%;
+}
+
+.fwo-upload:hover {
+  border-color: var(--fwo-cta);
+}
+
+.fwo-upload__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fwo-upload__title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.fwo-upload__sub {
+  color: var(--fwo-ink-3);
+  font-size: 12px;
+}
+
+.fwo-link-row {
+  align-items: center;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--fwo-ink-2);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 13px;
+  gap: 6px;
+  padding: 0;
+}
+
+.fwo-link-row:hover {
+  color: var(--fwo-ink);
+}
+
+/* ── Radio cards ── */
+.fwo-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fwo-radio {
+  align-items: flex-start;
+  background: var(--fwo-bg);
+  border: 1px solid var(--fwo-line);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.fwo-radio--active {
+  border-color: var(--fwo-cta);
+  box-shadow: inset 0 0 0 1px var(--fwo-cta);
+}
+
+.fwo-radio__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fwo-radio__dot {
+  border: 1.5px solid var(--fwo-ink-3);
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 18px;
+  margin-top: 1px;
+  position: relative;
+  width: 18px;
+}
+
+.fwo-radio--active .fwo-radio__dot {
+  border-color: var(--fwo-cta);
+}
+
+.fwo-radio--active .fwo-radio__dot::after {
+  background: var(--fwo-cta);
+  border-radius: 50%;
+  content: '';
+  inset: 3px;
+  position: absolute;
+}
+
+.fwo-radio__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fwo-radio__title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.fwo-radio__body {
+  color: var(--fwo-ink-2);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* ── Actions ── */
+.fwo-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.fwo-btn {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--fwo-radius);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  height: 50px;
+  justify-content: center;
+  transition: background 120ms ease, border-color 120ms ease;
+  width: 100%;
+}
+
+.fwo-btn--primary {
+  background: var(--fwo-cta);
+  color: #fff;
+}
+
+.fwo-btn--primary:hover {
+  background: var(--fwo-cta-hover);
+}
+
+.fwo-btn--submit {
+  background: var(--fwo-orange);
+  color: #fff;
+}
+
+.fwo-btn--submit:hover {
+  background: var(--fwo-orange-hover);
+}
+
+.fwo-btn--submit:disabled {
+  background: var(--fwo-green);
+  cursor: default;
+}
+
+.fwo-btn--ghost {
+  background: var(--fwo-bg);
+  border-color: var(--fwo-line);
+  color: var(--fwo-ink);
+}
+
+.fwo-btn--ghost:hover {
+  background: #f6f7f9;
+}
+
+/* ── Stagger-in for task content ── */
+@keyframes fwo-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.fwo-task-body > * {
+  animation: fwo-in 320ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+.fwo-task-body > *:nth-child(1) { animation-delay: 20ms; }
+.fwo-task-body > *:nth-child(2) { animation-delay: 70ms; }
+.fwo-task-body > *:nth-child(3) { animation-delay: 120ms; }
+.fwo-task-body > *:nth-child(4) { animation-delay: 170ms; }

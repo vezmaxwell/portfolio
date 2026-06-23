@@ -1,0 +1,65 @@
+/* Playful bounce for the flat home-page cards: a gentle bob that periodically
+   converges with the neighbour above/below (closing the 16px gap → a little
+   "bump") then springs back. Two phases (a/b) sit on alternating cards so
+   adjacent ones move toward each other at the same moment.
+
+   Scoped to flat, image-free cards only - animating the live-preview pairs would
+   rasterize their screenshots in a moving layer and blur them. */
+
+.vez-bouncy {
+  animation: vez-card-bob-a 6.5s ease-in-out infinite;
+  transform-origin: center;
+  transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vez-bouncy--b {
+  animation-name: vez-card-bob-b;
+}
+
+/* Hover/focus: pause the idle bob and lift + grow to echo the floating
+   previews beside them, so the flat cards feel just as interactive. */
+.vez-bouncy:hover,
+.vez-bouncy:focus-visible {
+  animation: none;
+  transform: translateY(-6px) scale(1.03);
+}
+
+@keyframes vez-card-bob-a {
+  0%,
+  26%,
+  74%,
+  100% {
+    transform: translateY(0);
+  }
+  46% {
+    transform: translateY(11px) scaleY(0.985);
+  }
+  58% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes vez-card-bob-b {
+  0%,
+  26%,
+  74%,
+  100% {
+    transform: translateY(0);
+  }
+  46% {
+    transform: translateY(-11px) scaleY(0.985);
+  }
+  58% {
+    transform: translateY(5px);
+  }
+}
+
+/* The page-load fall-in entrance (`.vez-fall*`) lives in globals.css so every
+   page can share it. The home page applies those classes explicitly (nav, hero,
+   each case-study pair); other pages use the `.vez-enter` container variant. */
+
+@media (prefers-reduced-motion: reduce) {
+  .vez-bouncy {
+    animation: none;
+  }
+}

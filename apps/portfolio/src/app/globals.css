@@ -1,0 +1,118 @@
+/* ── Page-load entrance ───────────────────────────────────────────
+   Each top-level block falls in from above and bounces on landing,
+   using the cards' spring curve. Two ways to apply it:
+
+   1. Explicit: add `vez-fall` to an element (+ a delay modifier or
+      `--fall-order`). The home page uses this for fine-grained control
+      over the nav, hero and each case-study pair.
+   2. Container: add `vez-enter` to a wrapper (e.g. <main>) and its
+      direct children cascade in automatically. The other pages use
+      this — they're just a few stacked sections.
+
+   `both` fill holds the from-state until the delay elapses; the
+   animation finishes cleanly (no lingering layer) so any screenshots
+   stay sharp once settled — they only soften mid-flight. */
+.vez-fall,
+.vez-enter > * {
+  animation: vez-fall-in 650ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.vez-fall--nav {
+  animation-delay: 0ms;
+}
+
+.vez-fall--hero {
+  animation-delay: 90ms;
+}
+
+/* Case-study pairs (home) come in after the hero, each offset by order. */
+.vez-preview-pair.vez-fall {
+  animation-delay: calc(220ms + var(--fall-order, 0) * 110ms);
+}
+
+/* Container stagger: nav → hero → content sections, same cadence as home. */
+.vez-enter > :nth-child(1) {
+  animation-delay: 0ms;
+}
+.vez-enter > :nth-child(2) {
+  animation-delay: 90ms;
+}
+.vez-enter > :nth-child(3) {
+  animation-delay: 200ms;
+}
+.vez-enter > :nth-child(4) {
+  animation-delay: 310ms;
+}
+.vez-enter > :nth-child(5) {
+  animation-delay: 420ms;
+}
+.vez-enter > :nth-child(n + 6) {
+  animation-delay: 530ms;
+}
+
+@keyframes vez-fall-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-56px) scale(0.97);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* The nav must NOT translate during its entrance. The fall animation moves the
+   element for 650ms, and because nav links are full-page-reload anchors the
+   entrance replays on every navigation — clicking a link mid-flight means
+   mousedown and mouseup land on different spots, so the browser fires no click
+   and you have to click twice. Fade the nav in instead: same entrance feel, but
+   a stationary, always-clickable hit target. (Applies on the home page via
+   `.vez-fall--nav` and on PageShell pages via `.vez-enter > nav`.) */
+.vez-nav.vez-fall,
+.vez-enter > .vez-nav {
+  animation-name: vez-nav-fade-in;
+  animation-timing-function: ease;
+}
+
+@keyframes vez-nav-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Gentle continuous bob for standalone illustrations (hero character art across
+   the site), echoing the bobbing home-page cards. Applied to the bare-illustration
+   images only — not screenshots or photos. */
+.vez-bob {
+  animation: vez-bob 5.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes vez-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vez-bob {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vez-fall,
+  .vez-enter > * {
+    animation: none;
+  }
+}

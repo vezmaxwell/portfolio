@@ -56,7 +56,7 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1124px) {
   .vez-hero {
     flex-direction: column;
     align-items: flex-start;
@@ -64,5 +64,9 @@
   .vez-hero__headline {
     font-size: 64px;
     line-height: 72px;
+  }
+  /* Centre the illustration once stacked, while the legend text stays left. */
+  .vez-hero__media {
+    align-self: center;
   }
 }

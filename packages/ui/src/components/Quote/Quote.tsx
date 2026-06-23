@@ -1,6 +1,5 @@
+import type { TintKey } from '../../types';
 import './Quote.css';
-
-export type TintKey = 'tint-1' | 'tint-2' | 'tint-3' | 'tint-4';
 
 export interface QuoteProps {
   children: React.ReactNode;

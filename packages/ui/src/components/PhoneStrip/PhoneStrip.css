@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1124px) {
   .vez-phone-strip {
     padding: var(--space-10) var(--space-4);
   }

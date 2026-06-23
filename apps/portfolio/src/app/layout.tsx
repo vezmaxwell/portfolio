@@ -4,9 +4,19 @@ import '@vez/ui/themes/script-assist.css';
 import '@vez/ui/themes/karehero.css';
 import '@vez/ui/themes/pictures.css';
 import '@vez/ui/themes/runna.css';
+import './globals.css';
 import type { Metadata } from 'next';
-import { Outfit, PT_Mono, PT_Serif } from 'next/font/google';
+import { Anton, Outfit, PT_Mono } from 'next/font/google';
 
+// Heavy condensed display face for headlines.
+const anton = Anton({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-anton',
+  display: 'swap',
+});
+
+// Kept for the in-app prototype UIs (Finity / Runna) which use a monospace look.
 const ptMono = PT_Mono({
   subsets: ['latin'],
   weight: ['400'],
@@ -14,13 +24,7 @@ const ptMono = PT_Mono({
   display: 'swap',
 });
 
-const ptSerif = PT_Serif({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-serif',
-  display: 'swap',
-});
-
+// Clean rounded sans for body copy, buttons, tags, etc.
 const outfit = Outfit({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -35,7 +39,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${ptSerif.variable} ${ptMono.variable} ${outfit.variable}`}>
+    <html lang="en" className={`${anton.variable} ${ptMono.variable} ${outfit.variable}`}>
       <body>{children}</body>
     </html>
   );

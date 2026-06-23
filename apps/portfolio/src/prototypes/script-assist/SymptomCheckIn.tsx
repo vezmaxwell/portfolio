@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './SymptomCheckIn.css';
 
-type Step = 'home' | 'pain' | 'sleep' | 'done';
+type Step = 'home' | 'pain' | 'sleep' | 'mood' | 'done';
 
 const RATINGS = [
   { value: 1, label: 'Bad', emoji: '😢' },
@@ -18,10 +18,11 @@ type Rating = (typeof RATINGS)[number]['value'];
 interface Answers {
   pain?: Rating;
   sleep?: Rating;
+  mood?: Rating;
 }
 
 function averageLabel(answers: Answers): string {
-  const values = [answers.pain, answers.sleep].filter((v): v is Rating => v !== undefined);
+  const values = [answers.pain, answers.sleep, answers.mood].filter((v): v is Rating => v !== undefined);
   if (values.length === 0) return 'OK';
   const avg = values.reduce((a, b) => a + b, 0) / values.length;
   if (avg >= 4.5) return 'great';
@@ -38,11 +39,17 @@ export interface SymptomCheckInProps {
   initialAnswers?: Answers;
   /** Run a scripted demo loop until the visitor interacts with the phone. */
   autoPlay?: boolean;
+  /**
+   * When false the phone is a read-only snapshot: all taps are ignored so the
+   * screen can sit in a flow strip purely to demonstrate the step.
+   */
+  interactive?: boolean;
 }
 
 const DEMO_NOTES = {
   pain: 'Felt some discomfort but bearable today.',
   sleep: 'Slept ok, woke up once.',
+  mood: 'Felt a little low but mostly calm.',
 } as const;
 
 
@@ -50,25 +57,26 @@ export function SymptomCheckIn({
   initialStep = 'home',
   initialAnswers = {},
   autoPlay = false,
+  interactive = true,
 }: SymptomCheckInProps = {}) {
   const [step, setStep] = useState<Step>(initialStep);
   const [answers, setAnswers] = useState<Answers>(initialAnswers);
-  const [notes, setNotes] = useState<{ pain: string; sleep: string }>({ pain: '', sleep: '' });
+  const [notes, setNotes] = useState<{ pain: string; sleep: string; mood: string }>({ pain: '', sleep: '', mood: '' });
   const [pressed, setPressed] = useState<'start' | 'next' | 'ok' | null>(null);
   // When the autoplay loop "taps" a rating chip we briefly flash it so the
   // visitor can see the tap before the chip activates.
-  const [pressedRating, setPressedRating] = useState<{ step: 'pain' | 'sleep'; value: Rating } | null>(
+  const [pressedRating, setPressedRating] = useState<{ step: 'pain' | 'sleep' | 'mood'; value: Rating } | null>(
     null,
   );
 
-  function setNote(key: 'pain' | 'sleep', value: string) {
+  function setNote(key: 'pain' | 'sleep' | 'mood', value: string) {
     setNotes((n) => ({ ...n, [key]: value }));
   }
 
   function reset() {
     setStep('home');
     setAnswers({});
-    setNotes({ pain: '', sleep: '' });
+    setNotes({ pain: '', sleep: '', mood: '' });
   }
 
   // Pain, sleep and done all live inside the stack-pushed page.
@@ -105,7 +113,7 @@ export function SymptomCheckIn({
       if (target === 'home') {
         setStep('home');
         setAnswers({});
-        setNotes({ pain: '', sleep: '' });
+        setNotes({ pain: '', sleep: '', mood: '' });
       } else {
         setStep(target);
       }
@@ -138,7 +146,7 @@ export function SymptomCheckIn({
 
     const aborted = () => cancelled || userTookOverRef.current;
 
-    async function typeInto(key: 'pain' | 'sleep') {
+    async function typeInto(key: 'pain' | 'sleep' | 'mood') {
       const target = DEMO_NOTES[key];
       for (let i = 1; i <= target.length; i++) {
         if (aborted()) return;
@@ -147,7 +155,7 @@ export function SymptomCheckIn({
       }
     }
 
-    async function tapRating(stepKey: 'pain' | 'sleep', value: Rating) {
+    async function tapRating(stepKey: 'pain' | 'sleep' | 'mood', value: Rating) {
       setPressedRating({ step: stepKey, value });
       await wait(160);
       setPressedRating(null);
@@ -160,7 +168,7 @@ export function SymptomCheckIn({
         // Reset to home each cycle.
         setStep('home');
         setAnswers({});
-        setNotes({ pain: '', sleep: '' });
+        setNotes({ pain: '', sleep: '', mood: '' });
         setPressed(null);
         setPressedRating(null);
         await wait(1200);
@@ -197,6 +205,23 @@ export function SymptomCheckIn({
         if (aborted()) return;
 
         await typeInto('sleep');
+        await wait(600);
+        if (aborted()) return;
+
+        // Press Next → push to mood.
+        setPressed('next');
+        await wait(180);
+        if (aborted()) return;
+        setPressed(null);
+        setStep('mood');
+        await wait(600);
+
+        if (aborted()) return;
+        await tapRating('mood', 4);
+        await wait(500);
+        if (aborted()) return;
+
+        await typeInto('mood');
         await wait(600);
         if (aborted()) return;
 
@@ -239,7 +264,12 @@ export function SymptomCheckIn({
   }
 
   return (
-    <div className="sa-app" onPointerDown={onAppPointerDown}>
+    <div
+      className="sa-app"
+      onPointerDown={onAppPointerDown}
+      style={interactive ? undefined : { pointerEvents: 'none', userSelect: 'none' }}
+      aria-hidden={interactive ? undefined : true}
+    >
       <AppNav />
       <div className="sa-body">
         <HomeScreen
@@ -262,8 +292,8 @@ export function SymptomCheckIn({
               <QuestionScreen
                 title="Pain level"
                 subtitle="How has your pain felt today?"
-                stepNumber={8}
-                totalSteps={9}
+                stepNumber={1}
+                totalSteps={3}
                 value={answers.pain}
                 onChange={(v) => setAnswers((a) => ({ ...a, pain: v }))}
                 noteText={notes.pain}
@@ -279,18 +309,35 @@ export function SymptomCheckIn({
               <QuestionScreen
                 title="Sleep score"
                 subtitle="How was your sleep last night?"
-                stepNumber={9}
-                totalSteps={9}
+                stepNumber={2}
+                totalSteps={3}
                 value={answers.sleep}
                 onChange={(v) => setAnswers((a) => ({ ...a, sleep: v }))}
                 noteText={notes.sleep}
                 onNoteChange={(v) => setNote('sleep', v)}
                 pressedValue={pressedRating?.step === 'sleep' ? pressedRating.value : null}
+                nextPressed={pressed === 'next'}
+                onNext={() => setStep('mood')}
+                onBack={() => setStep('pain')}
+                onClose={() => setStep('pain')}
+              />
+            )}
+            {step === 'mood' && (
+              <QuestionScreen
+                title="Mood"
+                subtitle="How has your mood felt today?"
+                stepNumber={3}
+                totalSteps={3}
+                value={answers.mood}
+                onChange={(v) => setAnswers((a) => ({ ...a, mood: v }))}
+                noteText={notes.mood}
+                onNoteChange={(v) => setNote('mood', v)}
+                pressedValue={pressedRating?.step === 'mood' ? pressedRating.value : null}
                 nextLabel="Done"
                 nextPressed={pressed === 'next'}
                 onNext={() => setStep('done')}
-                onBack={() => setStep('pain')}
-                onClose={() => setStep('pain')}
+                onBack={() => setStep('sleep')}
+                onClose={() => setStep('sleep')}
               />
             )}
             {step === 'done' && (
@@ -480,13 +527,23 @@ function QuestionScreen({
         </div>
       </header>
 
+      <div className="sa-progress">
+        <div className="sa-progress__row">
+          <span className="sa-progress__label">Progress</span>
+          <span className="sa-progress__step">Step {stepNumber} of {totalSteps}</span>
+        </div>
+        <div className="sa-progress__track">
+          <div
+            className="sa-progress__fill"
+            style={{ width: `${(stepNumber / totalSteps) * 100}%` }}
+          />
+        </div>
+      </div>
+
       <section className="sa-card">
         <header className="sa-q-card__head">
           <div className="sa-q-card__title-row">
             <h2 className="sa-q-card__title">{title}</h2>
-            <span className="sa-q-card__step">
-              {stepNumber}/{totalSteps}
-            </span>
           </div>
           <p className="sa-q-card__body">{subtitle}</p>
         </header>

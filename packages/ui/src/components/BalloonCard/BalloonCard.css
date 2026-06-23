@@ -1,0 +1,233 @@
+/* ── Balloon card ──────────────────────────────────────────────
+   A playful, themeable "inflated" take on the case-study card.
+   Idle float + hover expand + click pop. All colour comes from the
+   --vez-balloon-fill custom prop (set from a tint token), so it
+   re-themes automatically under any [data-theme]. */
+
+/* Side-by-side pair: 3D balloon + flat outlined pill field.
+   Grid with minmax(0, 1fr) columns guarantees an exact 50/50 split
+   regardless of each side's content. */
+.vez-balloon-pair {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+}
+
+.vez-balloon-pair > * {
+  min-width: 0;
+}
+
+.vez-balloon {
+  --vez-balloon-fill: var(--color-tint-1);
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  perspective: 1000px;
+  text-decoration: none;
+  transform-origin: center;
+  transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 100%;
+}
+
+@media (max-width: 1124px) {
+  .vez-balloon-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vez-balloon:hover,
+.vez-balloon:focus-visible {
+  outline: none;
+  transform: scale(1.05);
+}
+
+/* The puffy body — owns the perpetual float + layout. The fill/shadows live on
+   a blurred ::before backing layer so the balloon's silhouette is soft and
+   feathered while the text on top stays perfectly sharp. */
+.vez-balloon__body {
+  animation: vez-balloon-float 6s ease-in-out infinite;
+  /* Flat base fill, revealed when the 3D overlay (::before) fades on click. */
+  background: var(--vez-balloon-fill);
+  border-radius: 70px 85px 75px 90px;
+  display: flex;
+  flex-direction: column;
+  min-height: 464px;
+  padding: 40px 44px;
+  position: relative;
+  transform-origin: center;
+  transition: transform 380ms ease;
+  will-change: transform;
+}
+
+/* On hover, stop the wobble and settle to the flat, untilted pose it lands in
+   when clicked — so the click → go-flat has no jump. */
+.vez-balloon:hover .vez-balloon__body,
+.vez-balloon:focus-visible .vez-balloon__body {
+  animation: none;
+  transform: translateY(0) rotateX(0) rotateY(0) rotate(0deg);
+}
+
+.vez-balloon__body::before {
+  background:
+    radial-gradient(circle at 32% 20%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 16%),
+    radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 44%),
+    radial-gradient(circle at 74% 92%, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0) 52%),
+    var(--vez-balloon-fill);
+  border-radius: inherit;
+  box-shadow:
+    0 16px 30px -10px rgba(31, 30, 46, 0.42),
+    inset 0 8px 16px rgba(255, 255, 255, 0.75),
+    inset 0 -16px 28px rgba(0, 0, 0, 0.2);
+  content: '';
+  filter: blur(3px);
+  inset: 0;
+  position: absolute;
+  transition: box-shadow 320ms ease, filter 320ms ease, opacity 200ms ease;
+  z-index: 0;
+}
+
+.vez-balloon:hover .vez-balloon__body::before,
+.vez-balloon:focus-visible .vez-balloon__body::before {
+  box-shadow:
+    0 26px 44px -12px rgba(31, 30, 46, 0.5),
+    inset 0 10px 20px rgba(255, 255, 255, 0.85),
+    inset 0 -18px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Pressed state matches the clicked "go flat" look — fade the 3D overlay out. */
+.vez-balloon:active .vez-balloon__body::before {
+  opacity: 0;
+}
+
+/* Burst ring for the pop. */
+.vez-balloon__body::after {
+  border: 3px solid var(--vez-balloon-fill);
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+/* ── Content ── */
+.vez-balloon__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.vez-balloon__title {
+  color: #8c99bb;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-display-sm);
+  /* Debossed / engraved into the surface: dark catch on the top inner edge,
+     light highlight below — letters look pressed in. */
+  text-shadow:
+    0 -1px 1px rgba(15, 22, 60, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.vez-balloon__subtitle {
+  color: #8c99bb;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height-body);
+  margin-top: auto;
+  text-shadow:
+    0 -1px 1px rgba(15, 22, 60, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* Preview/media slot — fills the bubble and frames the screen inside it. */
+.vez-balloon__media {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.vez-balloon__body--media {
+  padding: 28px;
+}
+
+/* ── Go flat (on click, before navigating) ──
+   Fade out the 3D overlay (gloss, shadows, soft blurred edge) to reveal the
+   flat solid shape underneath, then navigate. Also settle the float to rest. */
+.vez-balloon--flattening {
+  pointer-events: none;
+}
+
+.vez-balloon--flattening .vez-balloon__body {
+  animation: vez-balloon-settle 360ms ease forwards;
+}
+
+/* Hold the flat look (continuous with the :active/pressed state — no restart,
+   no flash). The ::before opacity transition handles the fade. */
+.vez-balloon--flattening .vez-balloon__body::before {
+  opacity: 0;
+}
+
+@keyframes vez-balloon-float {
+  0% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg) rotate(-0.8deg);
+  }
+  25% {
+    transform: translateY(-7px) rotateX(3.5deg) rotateY(-4deg) rotate(0.4deg);
+  }
+  50% {
+    transform: translateY(-12px) rotateX(0deg) rotateY(0deg) rotate(0.8deg);
+  }
+  75% {
+    transform: translateY(-7px) rotateX(-3.5deg) rotateY(4deg) rotate(0.4deg);
+  }
+  100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg) rotate(-0.8deg);
+  }
+}
+
+/* Stop bobbing and settle square while it flattens. */
+@keyframes vez-balloon-settle {
+  to {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* ── Respect reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .vez-balloon,
+  .vez-balloon:hover,
+  .vez-balloon:focus-visible {
+    transform: none;
+    transition: none;
+  }
+  .vez-balloon__body,
+  .vez-balloon--flattening .vez-balloon__body {
+    animation: none;
+  }
+}
+
+@media (max-width: 1124px) {
+  .vez-balloon {
+    width: 100%;
+  }
+  .vez-balloon__body {
+    border-radius: 72px 84px 76px 90px;
+    min-height: 0;
+    padding: 40px 36px;
+  }
+}

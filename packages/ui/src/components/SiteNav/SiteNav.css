@@ -40,10 +40,44 @@
   letter-spacing: var(--letter-spacing);
   line-height: 22px;
   text-decoration: none;
-  transition: opacity var(--transition-fast);
+  transition: color var(--transition-fast), opacity var(--transition-fast);
   white-space: nowrap;
 }
 
 .vez-nav__link:hover {
   opacity: 0.6;
+}
+
+/* Active item: highlighted in the theme accent (chilli red in the base theme). */
+.vez-nav__link--active {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+/* Centered variant: single horizontal row with the brand dropped in the middle. */
+.vez-nav--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.vez-nav--center .vez-nav__menu {
+  align-items: center;
+  flex-direction: row;
+  gap: var(--space-5);
+}
+
+.vez-nav--center .vez-nav__brand {
+  height: auto;
+  width: auto;
+}
+
+.vez-nav__brand-item {
+  align-items: center;
+  display: inline-flex;
+}
+
+.vez-nav__logo {
+  display: block;
+  height: 44px;
+  width: auto;
 }

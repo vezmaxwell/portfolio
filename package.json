@@ -7,6 +7,8 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "npm run dev --workspace=portfolio",
+    "storybook": "npm run storybook --workspace=@vez/ui",
     "dev:portfolio": "npm run dev --workspace=portfolio",
     "dev:storybook": "npm run storybook --workspace=@vez/ui",
     "build:ui": "npm run build --workspace=@vez/ui",

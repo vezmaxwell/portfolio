@@ -1,6 +1,5 @@
+import type { TintKey } from '../../types';
 import './PhoneStrip.css';
-
-export type TintKey = 'tint-1' | 'tint-2' | 'tint-3' | 'tint-4';
 
 export interface PhoneStripProps {
   screens: { src: string; alt: string }[];

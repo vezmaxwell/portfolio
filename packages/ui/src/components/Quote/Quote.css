@@ -5,6 +5,7 @@
   color: var(--color-text);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: var(--space-6);
   margin: 0;
   padding: var(--space-12) var(--space-8);

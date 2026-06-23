@@ -1,19 +1,32 @@
 /* ============================================
    PICTURES THEME
-   Placeholder — designs to come. Neutral/charcoal.
+   A warm, editorial palette to match pictures.london:
+   a near-white cream canvas, charcoal ink, restrained
+   neutral tints so the film posters carry the colour.
    ============================================ */
 
 [data-theme='pictures'] {
+  --palette-cream: #f1ebdd;
+  --palette-cream-deep: #ece4d3;
+  --palette-sand: #d9cdb2;
+  --palette-stone: #e8e9e0;
+  --palette-sage: #c2c8b6;
+  --palette-taupe: #cdbf9f;
+
+  /* The whole Pictures section sits on a warm cream surface. */
+  --color-surface: #f4efe4;
+  --color-surface-alt: var(--palette-cream-deep);
+
   --color-accent: var(--palette-charcoal);
   --color-accent-hover: var(--palette-charcoal-light);
   --color-accent-foreground: var(--palette-off-white);
 
-  --color-tint-1: var(--palette-off-white-light);
-  --color-tint-1-strong: var(--palette-off-white-dark);
-  --color-tint-2: var(--palette-powder-blue-light);
-  --color-tint-2-strong: var(--palette-powder-blue-dark);
-  --color-tint-3: var(--palette-lilac-light);
-  --color-tint-3-strong: var(--palette-lilac-dark);
+  --color-tint-1: var(--palette-cream);
+  --color-tint-1-strong: var(--palette-sand);
+  --color-tint-2: var(--palette-stone);
+  --color-tint-2-strong: var(--palette-sage);
+  --color-tint-3: var(--palette-cream-deep);
+  --color-tint-3-strong: var(--palette-taupe);
   --color-tint-4: var(--palette-rose-light);
   --color-tint-4-strong: var(--palette-rose-dark);
 }

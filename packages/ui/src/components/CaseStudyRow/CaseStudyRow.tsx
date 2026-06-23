@@ -1,11 +1,12 @@
+import type { TintKey } from '../../types';
 import './CaseStudyRow.css';
-
-export type TintKey = 'tint-1' | 'tint-2' | 'tint-3' | 'tint-4';
 
 export interface TextCardProps {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   tint?: TintKey;
+  /** Custom fill colour, overrides `tint` when set. */
+  background?: string;
   /** Bordered (outline only) instead of filled. */
   outlined?: boolean;
   /** Shape variant for the corner pair that meets a TagCard. */
@@ -51,6 +52,7 @@ export function TextCard({
   title,
   subtitle,
   tint = 'tint-1',
+  background,
   outlined = false,
   shape = 'rounded',
   className = '',
@@ -65,7 +67,7 @@ export function TextCard({
     .join(' ');
   const style = outlined
     ? { borderColor: tintBg(tint, true) }
-    : { background: tintBg(tint) };
+    : { background: background ?? tintBg(tint) };
 
   return (
     <div className={classes} style={style}>

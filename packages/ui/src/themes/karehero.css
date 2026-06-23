@@ -1,19 +1,35 @@
 /* ============================================
    KAREHERO THEME
-   Placeholder — designs to come. Soft rose/red.
+   Lifted from the app: a deep teal-green primary (the
+   "Book a call" CTA), with sage, gold, blush and teal
+   box tints drawn from the warm care-circle UI.
    ============================================ */
 
 [data-theme='karehero'] {
-  --color-accent: var(--palette-rose-dark);
-  --color-accent-hover: var(--palette-chilli-dark);
+  /* The app's primary CTA colour (the dark teal-green "Book a call" button). */
+  --palette-kh-green: #00423c;
+  --palette-kh-green-soft: #1a544c;
+
+  /* Soft box tints sampled from the app surfaces. */
+  --palette-kh-sage: #e2e7c6;
+  --palette-kh-sage-deep: #c2cb8c;
+  --palette-kh-gold: #f4ecbf;
+  --palette-kh-gold-deep: #e0cd7f;
+  --palette-kh-blush: #f1dce3;
+  --palette-kh-blush-deep: #d4a2b3;
+  --palette-kh-teal: #d9e8e3;
+  --palette-kh-teal-deep: #a4c8bd;
+
+  --color-accent: var(--palette-kh-green);
+  --color-accent-hover: var(--palette-kh-green-soft);
   --color-accent-foreground: var(--palette-off-white);
 
-  --color-tint-1: var(--palette-rose-light);
-  --color-tint-1-strong: var(--palette-rose-dark);
-  --color-tint-2: var(--palette-limelight-light);
-  --color-tint-2-strong: var(--palette-limelight-dark);
-  --color-tint-3: var(--palette-lilac-light);
-  --color-tint-3-strong: var(--palette-lilac-dark);
-  --color-tint-4: var(--palette-rose);
-  --color-tint-4-strong: var(--palette-rose-dark);
+  --color-tint-1: var(--palette-kh-sage);
+  --color-tint-1-strong: var(--palette-kh-sage-deep);
+  --color-tint-2: var(--palette-kh-gold);
+  --color-tint-2-strong: var(--palette-kh-gold-deep);
+  --color-tint-3: var(--palette-kh-blush);
+  --color-tint-3-strong: var(--palette-kh-blush-deep);
+  --color-tint-4: var(--palette-kh-teal);
+  --color-tint-4-strong: var(--palette-kh-teal-deep);
 }

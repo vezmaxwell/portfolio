@@ -1,0 +1,103 @@
+/* Side-by-side pair: case-study card + floating preview.
+   Grid with minmax(0, 1fr) columns guarantees an exact 50/50 split. */
+.vez-preview-pair {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+}
+
+.vez-preview-pair > * {
+  min-width: 0;
+}
+
+/* Reverse pairs are text-first in the DOM; on desktop, flip the columns
+   visually so the preview sits on the left and the layout still alternates. */
+.vez-preview-pair--reverse > :first-child {
+  order: 2;
+}
+
+@media (max-width: 1124px) {
+  .vez-preview-pair {
+    grid-template-columns: 1fr;
+  }
+  /* Single column: drop the desktop flip so every pair reads text → preview. */
+  .vez-preview-pair--reverse > :first-child {
+    order: 0;
+  }
+}
+
+/* ── Floating 3D preview ───────────────────────────────────────
+   A live prototype inside a device/browser frame, floating and gently
+   bobbing, as one clickable link. Front-facing (no side tilt). */
+.vez-floating-preview-link {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  min-height: 464px;
+  min-width: 0;
+  text-decoration: none;
+}
+
+/* Owns the float bob.
+   NB: no `will-change: transform` here — permanently promoting this to a GPU
+   layer caps the raster resolution of the drop-shadow-filtered screen inside,
+   which softens the screenshot on Retina. The gentle 6s bob composites fine
+   without the hint. */
+.vez-floating-preview {
+  animation: vez-floating-preview-float 6s ease-in-out infinite;
+  display: block;
+}
+
+/* Owns the floating drop-shadow + the hover lift. */
+.vez-floating-preview__device {
+  display: block;
+  filter: drop-shadow(0 30px 30px rgba(31, 30, 46, 0.4));
+  transform-origin: center;
+  transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vez-floating-preview-link:hover .vez-floating-preview__device,
+.vez-floating-preview-link:focus-visible .vez-floating-preview__device {
+  transform: translateY(-8px) scale(1.04);
+}
+
+.vez-floating-preview-link:focus-visible {
+  outline: none;
+}
+
+/* Fixed-size clipping box (set inline from width*scale / height*scale) so the
+   scaled screen doesn't expand the layout. */
+.vez-floating-preview__frame {
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  position: relative;
+}
+
+/* Renders the screen near-native (width set inline) then scales it down. */
+.vez-floating-preview__scale {
+  display: block;
+  transform-origin: top left;
+}
+
+@keyframes vez-floating-preview-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vez-floating-preview {
+    animation: none;
+  }
+  .vez-floating-preview__device,
+  .vez-floating-preview-link:hover .vez-floating-preview__device {
+    transition: none;
+  }
+}

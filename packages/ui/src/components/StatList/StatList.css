@@ -1,4 +1,7 @@
 .vez-stat-list {
+  /* Hug the content vertically (don't stretch to match the neighbour's height);
+     width still fills its share of the row. */
+  align-self: flex-start;
   background: var(--color-surface-alt);
   border-radius: var(--radius-lg);
   color: var(--color-text);

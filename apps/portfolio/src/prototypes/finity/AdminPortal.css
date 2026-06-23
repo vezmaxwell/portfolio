@@ -1,0 +1,388 @@
+/* ============================================
+   Finity Admin Portal - payroll back-office.
+   Dense worker table in the "Onboarding area",
+   black icon sidebar, light workspace. Tuned to
+   Finity's web app, scoped to this prototype.
+   ============================================ */
+
+.fin-portal.vez-browser {
+  height: 600px;
+}
+
+.fin-portal__layout {
+  --fin-ink: #16191f;
+  --fin-ink-2: #5c636e;
+  --fin-ink-3: #9097a1;
+  --fin-line: #e9ebef;
+  --fin-bg: #ffffff;
+  --fin-bg-alt: #f6f7f9;
+  --fin-sidebar: #0b0b0c;
+  --fin-sidebar-line: #232325;
+  --fin-orange: #ef9356;
+  --fin-orange-ink: #d3712f;
+
+  display: flex;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Sidebar ── */
+.fin-sidebar {
+  background: var(--fin-sidebar);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 2px;
+  padding: 14px 10px 10px;
+  width: 196px;
+}
+
+.fin-sidebar__brand {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  padding: 2px 6px 14px;
+}
+
+.fin-sidebar__logo {
+  align-items: center;
+  background: var(--fin-orange);
+  border-radius: 7px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 800;
+  height: 26px;
+  justify-content: center;
+  width: 26px;
+}
+
+.fin-sidebar__brandname {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.fin-sidebar__tools {
+  color: #6a6a6e;
+  display: inline-flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.fin-sidebar__caption {
+  color: #5e5e63;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  padding: 14px 8px 5px;
+  text-transform: uppercase;
+}
+
+.fin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fin-sidebar__nav--bottom {
+  border-top: 1px solid var(--fin-sidebar-line);
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.fin-nav-item {
+  align-items: center;
+  border-radius: 8px;
+  color: #a6a6aa;
+  cursor: default;
+  display: flex;
+  font-size: 13px;
+  gap: 10px;
+  padding: 8px 8px;
+}
+
+.fin-nav-item .fin-icon { color: #7d7d82; flex-shrink: 0; }
+.fin-nav-item__label { flex: 1 1 auto; }
+
+.fin-nav-item--active {
+  color: var(--fin-orange);
+  font-weight: 600;
+}
+
+.fin-nav-item--active .fin-icon { color: var(--fin-orange); }
+
+.fin-nav-badge {
+  align-items: center;
+  background: var(--fin-orange);
+  border-radius: 99px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 700;
+  height: 17px;
+  justify-content: center;
+  min-width: 17px;
+  padding: 0 4px;
+}
+
+.fin-sidebar__version {
+  color: #4a4a4e;
+  font-size: 10px;
+  padding: 12px 8px 2px;
+}
+
+/* ── Main ── */
+.fin-main {
+  background: var(--fin-bg);
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  padding: 16px 20px 12px;
+}
+
+.fin-main__head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.fin-main__title {
+  color: var(--fin-ink);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.fin-main__actions { display: flex; gap: 8px; }
+
+.fin-btn {
+  border: 1px solid transparent;
+  border-radius: 99px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+}
+
+.fin-btn--ghost { background: #fff; border-color: var(--fin-line); color: var(--fin-ink); }
+.fin-btn--ghost:hover { background: var(--fin-bg-alt); }
+.fin-btn--primary { background: var(--fin-ink); color: #fff; }
+.fin-btn--primary:hover { background: #2a2e36; }
+
+/* ── Tabs ── */
+.fin-tabs {
+  border-bottom: 1px solid var(--fin-line);
+  display: flex;
+  gap: 22px;
+  margin-bottom: 14px;
+}
+
+.fin-tab {
+  color: var(--fin-ink-3);
+  font-size: 13px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.fin-tab--active {
+  border-bottom: 2px solid var(--fin-ink);
+  color: var(--fin-ink);
+}
+
+/* ── Search toolbar ── */
+.fin-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.fin-search {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--fin-line);
+  border-radius: 9px;
+  color: var(--fin-ink-3);
+  display: flex;
+  flex: 1 1 auto;
+  font-size: 13px;
+  gap: 8px;
+  padding: 9px 12px;
+}
+
+.fin-chip {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--fin-line);
+  border-radius: 9px;
+  color: var(--fin-ink);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 500;
+  gap: 6px;
+  padding: 9px 12px;
+  white-space: nowrap;
+}
+
+/* ── Filter bar ── */
+.fin-filterbar {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.fin-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.fin-filterbar__right { display: flex; gap: 6px; flex-shrink: 0; }
+
+.fin-filter {
+  background: #fff;
+  border: 1px solid var(--fin-line);
+  border-radius: 99px;
+  color: var(--fin-ink-2);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  width: fit-content;
+  padding: 6px 8px;
+}
+
+.fin-filter:hover { background: var(--fin-bg-alt); }
+
+.fin-filter--active {
+  background: var(--fin-ink);
+  border-color: var(--fin-ink);
+  color: #fff;
+}
+
+.fin-filter--all.fin-filter--active {
+  background: var(--fin-orange);
+  border-color: var(--fin-orange);
+  color: #fff;
+}
+
+.fin-filter--muted { color: var(--fin-ink-3); cursor: default; }
+
+/* ── Table ── */
+.fin-table {
+  border: 1px solid var(--fin-line);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.fin-table__head,
+.fin-table__row {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 24px 1.2fr 1.5fr 1.1fr 1fr 1.1fr 1.2fr 0.9fr;
+  padding: 0 14px;
+}
+
+.fin-table__head {
+  background: var(--fin-bg-alt);
+  border-bottom: 1px solid var(--fin-line);
+  color: var(--fin-ink-3);
+  font-size: 11px;
+  font-weight: 600;
+  min-height: 42px;
+}
+
+.fin-table__body {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.fin-table__row {
+  border-bottom: 1px solid var(--fin-line);
+  min-height: 52px;
+}
+
+.fin-table__row:last-child { border-bottom: none; }
+.fin-table__row:hover { background: var(--fin-bg-alt); }
+
+.fin-checkbox {
+  border: 1.5px solid #cfd3da;
+  border-radius: 5px;
+  height: 17px;
+  width: 17px;
+}
+
+.fin-cell {
+  color: var(--fin-ink);
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fin-cell--name { font-weight: 600; }
+.fin-cell--muted { color: var(--fin-ink-2); }
+
+/* ── Status badges ── */
+.fin-badge {
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 6px 8px;
+  white-space: nowrap;
+}
+
+.fin-badge--invited { background: #d8e8df; color: #3c6e57; }
+.fin-badge--in-progress { background: #fbf0c4; color: #8a6d18; }
+.fin-badge--pending { background: #fbdcc9; color: #b1561f; }
+.fin-badge--approved { background: #cdeccf; color: #2c7a3f; }
+.fin-badge--rejected { background: #fad7d7; color: #b23434; }
+.fin-badge--cancelled { background: #eceef1; color: #6a717b; }
+
+/* ── Action links ── */
+.fin-action {
+  background: none;
+  border: none;
+  color: var(--fin-orange-ink);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.fin-empty {
+  color: var(--fin-ink-3);
+  font-size: 13px;
+  padding: 28px 16px;
+  text-align: center;
+}
+
+/* ── Table footer ── */
+.fin-tablefoot {
+  align-items: center;
+  color: var(--fin-ink-2);
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 12px 4px 2px;
+}
+
+.fin-perpage { color: var(--fin-ink-2); }
+
+.fin-pager { color: var(--fin-ink-2); display: flex; gap: 10px; align-items: center; }
+.fin-pager span { align-items: center; border-radius: 50%; display: inline-flex; height: 22px; justify-content: center; width: 22px; }
+.fin-pager__active { background: #e7e9ed; color: var(--fin-ink); font-weight: 600; }

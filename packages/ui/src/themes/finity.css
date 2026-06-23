@@ -8,12 +8,63 @@
   --color-accent-hover: var(--palette-chilli-dark);
   --color-accent-foreground: var(--palette-off-white);
 
-  --color-tint-1: var(--palette-limelight);
-  --color-tint-1-strong: var(--palette-limelight-dark);
-  --color-tint-2: var(--palette-rose-light);
-  --color-tint-2-strong: var(--palette-rose-dark);
-  --color-tint-3: var(--palette-powder-blue);
-  --color-tint-3-strong: var(--palette-powder-blue-dark);
-  --color-tint-4: var(--palette-rose);
-  --color-tint-4-strong: var(--palette-rose-dark);
+  /* Box tints lifted from the Finity app: the limelight brand wash plus the
+     pastel status-tag colours (mint = done, amber = pending, blush = missing). */
+  --palette-fin-lime: #ecf4bf;
+  --palette-fin-lime-deep: #c3d479;
+  --palette-fin-mint: #dcefdf;
+  --palette-fin-mint-deep: #abd4b3;
+  --palette-fin-amber: #f8edc9;
+  --palette-fin-amber-deep: #e6c97f;
+  --palette-fin-blush: #f8dde7;
+  --palette-fin-blush-deep: #eaa6bd;
+
+  --color-tint-1: var(--palette-fin-lime);
+  --color-tint-1-strong: var(--palette-fin-lime-deep);
+  --color-tint-2: var(--palette-fin-blush);
+  --color-tint-2-strong: var(--palette-fin-blush-deep);
+  --color-tint-3: var(--palette-fin-amber);
+  --color-tint-3-strong: var(--palette-fin-amber-deep);
+  --color-tint-4: var(--palette-fin-mint);
+  --color-tint-4-strong: var(--palette-fin-mint-deep);
+
+  /* --- Finity app-brand tokens (admin portal + mobile prototypes) --- */
+  --app-primary: #1c2433;
+  --app-primary-hover: #253047;
+  --app-primary-foreground: #f0f0f5;
+
+  --app-accent: var(--palette-limelight-dark);
+  --app-accent-light: var(--palette-limelight);
+  --app-accent-tint: var(--palette-limelight-light);
+
+  --app-bg: #ffffff;
+  --app-bg-sidebar: #1c2433;
+  --app-bg-sidebar-hover: #253047;
+  --app-bg-subtle: #f8f9fa;
+
+  --app-text: #1a1a2e;
+  --app-text-strong: #0f1221;
+  --app-text-secondary: #606070;
+  --app-text-tertiary: #9090a0;
+  --app-text-on-dark: #f0f0f5;
+  --app-text-secondary-on-dark: rgba(240, 240, 245, 0.6);
+
+  --app-border: #e2e4e9;
+  --app-border-strong: #c0c4d0;
+  --app-border-input: #c0c4d0;
+
+  --app-tag-pending-bg: #fff8e1;
+  --app-tag-pending-fg: #7a4500;
+  --app-tag-done-bg: #e8f5e9;
+  --app-tag-done-fg: #1b5e20;
+  --app-tag-missing-bg: #fce4ec;
+  --app-tag-missing-fg: #7a0030;
+
+  --app-radius-xs: 2px;
+  --app-radius-sm: 4px;
+  --app-radius-md: 8px;
+  --app-radius-lg: 12px;
+  --app-radius-pill: 9999px;
+
+  --app-font: var(--font-mono, 'PT Mono'), ui-monospace, 'SF Mono', Menlo, monospace;
 }

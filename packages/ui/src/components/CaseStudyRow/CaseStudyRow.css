@@ -105,7 +105,7 @@
   text-align: right;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1124px) {
   .vez-case-row,
   .vez-case-row--reverse {
     flex-direction: column;

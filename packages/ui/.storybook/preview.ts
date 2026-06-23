@@ -11,7 +11,7 @@ if (typeof document !== 'undefined' && !document.getElementById('vez-fonts')) {
   link.id = 'vez-fonts';
   link.rel = 'stylesheet';
   link.href =
-    'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=PT+Mono&family=PT+Serif:wght@400;700&display=swap';
+    'https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@400;500;600;700&family=PT+Mono&display=swap';
   document.head.appendChild(link);
 }
 

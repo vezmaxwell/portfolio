@@ -8,12 +8,60 @@
   --color-accent-hover: var(--palette-chilli-dark);
   --color-accent-foreground: var(--palette-off-white);
 
-  --color-tint-1: var(--palette-chilli-light);
-  --color-tint-1-strong: var(--palette-chilli);
-  --color-tint-2: var(--palette-chilli);
-  --color-tint-2-strong: var(--palette-chilli-dark);
-  --color-tint-3: var(--palette-rose-light);
-  --color-tint-3-strong: var(--palette-rose-dark);
-  --color-tint-4: var(--palette-charcoal);
-  --color-tint-4-strong: var(--palette-charcoal-light);
+  /* Box tints lifted from the Runna app: a soft coral (the red identity, calmed),
+     the light-grey app canvas, the lime accent, and the lilac from the plan UI.
+     The saturated red stays in --color-accent and the --app-* button tokens below. */
+  --palette-run-coral: #ffdcd3;
+  --palette-run-coral-deep: #f2997f;
+  --palette-run-cloud: #e7e8ec;
+  --palette-run-cloud-deep: #c5c8d1;
+  --palette-run-lime: #eaf0cf;
+  --palette-run-lime-deep: #bcc873;
+  --palette-run-mist: #e4e6f3;
+  --palette-run-mist-deep: #b3b8df;
+
+  --color-tint-1: var(--palette-run-coral);
+  --color-tint-1-strong: var(--palette-run-coral-deep);
+  --color-tint-2: var(--palette-run-cloud);
+  --color-tint-2-strong: var(--palette-run-cloud-deep);
+  --color-tint-3: var(--palette-run-lime);
+  --color-tint-3-strong: var(--palette-run-lime-deep);
+  --color-tint-4: var(--palette-run-mist);
+  --color-tint-4-strong: var(--palette-run-mist-deep);
+
+  /* --- Runna app-brand tokens (workout prototypes) --- */
+  --app-primary: var(--palette-chilli);
+  --app-primary-hover: var(--palette-chilli-dark);
+  --app-primary-foreground: #ffffff;
+
+  --app-accent: var(--palette-chilli);
+  --app-accent-light: var(--palette-chilli-light);
+
+  --app-bg: #ffffff;
+  --app-bg-screen: #f5f5f5;
+  --app-bg-subtle: #eeeeee;
+  --app-bg-dark: #0d0d0d;
+  --app-bg-card-dark: #1a1a1a;
+
+  --app-text: #1a1a1a;
+  --app-text-strong: #0d0d0d;
+  --app-text-secondary: #606060;
+  --app-text-tertiary: #a0a0a0;
+  --app-text-on-dark: #ffffff;
+  --app-text-secondary-on-dark: rgba(255, 255, 255, 0.6);
+
+  --app-border: #e5e5e5;
+  --app-border-strong: #c0c0c0;
+  --app-border-input: #c5c5c5;
+  --app-border-on-dark: rgba(255, 255, 255, 0.15);
+
+  --app-radius-sm: 8px;
+  --app-radius-md: 12px;
+  --app-radius-lg: 16px;
+  --app-radius-pill: 9999px;
+
+  --app-font: var(--font-mono, 'PT Mono'), ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --statusbar-bg: #0d0d0d;
+  --statusbar-color: #ffffff;
 }

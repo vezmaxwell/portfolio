@@ -16,14 +16,25 @@
   --color-accent-hover: var(--palette-chilli-dark);
   --color-accent-foreground: var(--palette-off-white);
 
-  --color-tint-1: var(--palette-lilac-light);
-  --color-tint-1-strong: var(--palette-lilac-dark);
-  --color-tint-2: var(--palette-powder-blue-light);
-  --color-tint-2-strong: var(--palette-powder-blue-dark);
-  --color-tint-3: var(--palette-powder-blue);
-  --color-tint-3-strong: var(--palette-powder-blue-dark);
-  --color-tint-4: var(--palette-lilac);
-  --color-tint-4-strong: var(--palette-lilac-dark);
+  /* Box tints lifted from the Script Assist app: the lavender nav/accent wash,
+     the amber + green status chips, and a deeper indigo from the active states. */
+  --palette-sa-lavender: #e9eafa;
+  --palette-sa-lavender-deep: #bfc3ec;
+  --palette-sa-butter: #f8f1c4;
+  --palette-sa-butter-deep: #e3cf86;
+  --palette-sa-mint: #dff0e3;
+  --palette-sa-mint-deep: #aed7b8;
+  --palette-sa-indigo: #dfe0f2;
+  --palette-sa-indigo-deep: #a7abde;
+
+  --color-tint-1: var(--palette-sa-lavender);
+  --color-tint-1-strong: var(--palette-sa-lavender-deep);
+  --color-tint-2: var(--palette-sa-butter);
+  --color-tint-2-strong: var(--palette-sa-butter-deep);
+  --color-tint-3: var(--palette-sa-mint);
+  --color-tint-3-strong: var(--palette-sa-mint-deep);
+  --color-tint-4: var(--palette-sa-indigo);
+  --color-tint-4-strong: var(--palette-sa-indigo-deep);
 
   /* --- Script Assist app brand --- */
   --app-primary: #3e4d7c;
@@ -36,6 +47,10 @@
   --app-bg-screen: #ffffff;         /* screen and cards both white — separation comes from the card shadow */
   --app-bg-subtle: #fafafa;
   --app-bg-nav: #f5f5fe; /* lavender top nav region */
+
+  /* Phone frame in the app's brand indigo (instead of the
+     default green) so the device matches the Script Assist palette. */
+  --phone-frame-color: #3e4d7c;
 
   /* Make the Phone's iOS status bar blend with the app's
      lavender nav so they read as a single header block. */

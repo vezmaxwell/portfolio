@@ -21,6 +21,7 @@
 }
 
 .vez-image-block__img {
+  border-radius: var(--radius-sm);
   display: block;
   max-height: 100%;
   max-width: 100%;

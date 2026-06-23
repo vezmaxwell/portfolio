@@ -1,5 +1,5 @@
 .vez-content-block {
-  background: var(--color-tint-1);
+  background: transparent;
   border-radius: var(--radius-lg);
   color: var(--color-text);
   display: flex;
@@ -8,6 +8,11 @@
   gap: var(--space-4);
   min-width: 0;
   padding: 36px;
+}
+
+/* Plain block: no fill, sits flush on the page surface like prose. */
+.vez-content-block--plain {
+  padding: 4px 0;
 }
 
 .vez-content-block--outlined {

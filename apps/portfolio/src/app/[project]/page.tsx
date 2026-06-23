@@ -13,10 +13,12 @@ import { PROJECTS, getCaseStudiesForProject, getProject } from '../../content';
 
 const NAV_ITEMS = [
   { label: 'work', href: '/' },
-  { label: 'blurb', href: '/#blurb' },
-  { label: 'me', href: '/#me' },
-  { label: 'hello', href: '/#hello' },
+  { label: 'hello', href: '/hello' },
 ];
+
+// The /blurb routes are turned off, so hide entry points that link into them.
+// Flip to true (and un-private the _blurb folder) to bring the overview back.
+const SHOW_BLURB: boolean = false;
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ project: p.slug }));
@@ -33,8 +35,14 @@ export default function ProjectPage({ params }: { params: { project: string } })
       data-theme={project.slug}
       style={{ background: 'var(--color-surface)', color: 'var(--color-text)', minHeight: '100vh' }}
     >
-      <main>
-        <SiteNav items={NAV_ITEMS} />
+      <main className="vez-enter">
+        <SiteNav
+          items={NAV_ITEMS}
+          brandPosition="center"
+          brand={
+            <img src="/assets/shared/butterfly.png" alt="Vez Maxwell" className="vez-nav__logo" />
+          }
+        />
 
         <Section spacing="lg" align="center">
           <Hero
@@ -55,19 +63,22 @@ export default function ProjectPage({ params }: { params: { project: string } })
                 <div
                   style={{
                     alignItems: 'center',
-                    background: `var(--color-${project.heroTint ?? 'tint-1'})`,
+                    background: project.heroBare
+                      ? 'transparent'
+                      : `var(--color-${project.heroTint ?? 'tint-1'})`,
                     borderRadius: 'var(--radius-lg)',
                     display: 'flex',
-                    height: 540,
+                    height: project.heroBare ? 600 : 540,
                     justifyContent: 'center',
                     overflow: 'hidden',
-                    padding: 32,
-                    width: 480,
+                    padding: project.heroBare ? 12 : 32,
+                    width: project.heroBare ? 520 : 480,
                   }}
                 >
                   <img
                     src={project.heroImage}
                     alt={`${project.name} illustration`}
+                    className={project.heroBare ? 'vez-bob' : undefined}
                     style={{ display: 'block', maxHeight: '100%', maxWidth: '100%' }}
                   />
                 </div>
@@ -113,13 +124,13 @@ export default function ProjectPage({ params }: { params: { project: string } })
                   );
                 })}
 
-                {project.overviewLink && (
+                {SHOW_BLURB && project.overviewLink && (
                   <OverviewPill
                     tint={project.overviewLink.tint}
                     bordered={project.overviewLink.bordered}
                     cta={{
                       label: project.overviewLink.ctaLabel,
-                      href: `/${project.overviewLink.projectSlug}/overview`,
+                      href: `/blurb/${project.overviewLink.projectSlug}-overview`,
                     }}
                   >
                     <p>
