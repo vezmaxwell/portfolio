@@ -7,21 +7,34 @@ export interface QuoteProps {
   tint?: TintKey;
   /** Big serif treatment for short pull-quotes. */
   size?: 'md' | 'lg';
+  /** Render the decorative quotation marks. Off for a bare statement line. */
+  marks?: boolean;
   className?: string;
 }
 
-export function Quote({ children, attribution, tint = 'tint-1', size = 'lg', className = '' }: QuoteProps) {
+export function Quote({
+  children,
+  attribution,
+  tint = 'tint-1',
+  size = 'lg',
+  marks = true,
+  className = '',
+}: QuoteProps) {
   const classes = ['vez-quote', `vez-quote--${size}`, className].filter(Boolean).join(' ');
   return (
     <figure className={classes} style={{ background: `var(--color-${tint})` }}>
-      <span className="vez-quote__mark vez-quote__mark--open" aria-hidden="true">
-        “
-      </span>
+      {marks && (
+        <span className="vez-quote__mark vez-quote__mark--open" aria-hidden="true">
+          “
+        </span>
+      )}
       <blockquote className="vez-quote__body">{children}</blockquote>
       {attribution && <figcaption className="vez-quote__attribution">{attribution}</figcaption>}
-      <span className="vez-quote__mark vez-quote__mark--close" aria-hidden="true">
-        ”
-      </span>
+      {marks && (
+        <span className="vez-quote__mark vez-quote__mark--close" aria-hidden="true">
+          ”
+        </span>
+      )}
     </figure>
   );
 }

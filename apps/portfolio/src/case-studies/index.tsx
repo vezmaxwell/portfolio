@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react';
 import { KareheroCareExpertScreenBody } from './karehero-care-expert-screen';
+import { KareheroDesignsDevBody } from './karehero-designs-dev';
 import { MdtReviewsBody } from './mdt-reviews';
 import { PensionClarityBody } from './pension-clarity';
 import { PicturesCinemaGuideBody } from './pictures-cinema-guide';
@@ -16,6 +17,7 @@ const REGISTRY: Record<CaseStudyKey, ComponentType> = {
   'finity:pension-clarity': PensionClarityBody,
   'runna:workouts': RunnaWorkoutsBody,
   'karehero:care-expert-screen': KareheroCareExpertScreenBody,
+  'karehero:designs-dev': KareheroDesignsDevBody,
   'pictures:cinema-guide': PicturesCinemaGuideBody,
 };
 

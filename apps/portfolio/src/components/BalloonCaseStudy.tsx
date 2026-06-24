@@ -98,6 +98,24 @@ function previewFor(card: CaseStudyCard): PreviewSpec | null {
       ),
     };
   }
+  if (card.slug === 'designs-dev') {
+    // The drill-mode tooling shot, framed in a browser window. Source is 2000×1257.
+    return {
+      width: 540,
+      height: 360, // 540 × (1257/2000) image (≈339) + the slim compact chrome bar (≈20)
+      scale: 1,
+      fluid: true, // wide browser shot — let it shrink to fit a phone column
+      node: (
+        <Browser url="designs.dev" compact>
+          <img
+            src="/assets/karehero/designs-dev-inspect-card.jpg"
+            alt="designs.dev in drill mode, grading a prototype against the design system"
+            style={{ display: 'block', height: 'auto', width: '100%' }}
+          />
+        </Browser>
+      ),
+    };
+  }
   if (card.slug === 'cinema-guide') {
     // Static screenshot of the live site, framed in a browser window. Rendered at
     // final size (scale 1) so the 4400×2858 source gets one sharp downscale.

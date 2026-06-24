@@ -194,6 +194,18 @@ export const CASE_STUDIES: CaseStudyCard[] = [
     imageBare: true,
   },
   {
+    slug: 'designs-dev',
+    projectSlug: 'karehero',
+    title: 'A design system that checks its own work.',
+    subtitle: 'designs.dev: a prototyping environment that grades how every screen is built.',
+    tags: ['Design systems', 'Internal tooling', 'React', 'Process'],
+    tint: 'tint-2',
+    textSide: 'left',
+    tagShape: 'pill-top',
+    image: '/assets/karehero/designs-dev-character.png',
+    imageBare: true,
+  },
+  {
     slug: 'cinema-guide',
     projectSlug: 'pictures',
     title: 'Giving a much-loved cinema guide some soul.',
@@ -214,6 +226,7 @@ export const CASE_STUDIES: CaseStudyCard[] = [
  */
 export const NAV_ORDER = [
   'care-expert-screen',
+  'designs-dev',
   'worker-onboarding',
   'cinema-guide',
   'symptom-monitoring',
