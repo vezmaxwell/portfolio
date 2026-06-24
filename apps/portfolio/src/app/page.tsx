@@ -12,6 +12,13 @@ const NAV_ITEMS = [
 export default function Home() {
   return (
     <main>
+      <img
+        src="/assets/home/mango.png"
+        alt="Mango, Vez's dog, peeking in from the edge of the screen"
+        className="vez-mango-peek"
+        aria-hidden="true"
+      />
+
       <SiteNavSpy
         className="vez-fall vez-fall--nav"
         items={NAV_ITEMS}

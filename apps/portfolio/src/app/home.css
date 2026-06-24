@@ -54,6 +54,66 @@
   }
 }
 
+/* Mango peeking in from the left edge of the screen - rotated so she pokes her
+   head around the corner, with most of her body cropped off-screen. Pinned to
+   the viewport so she stays put as the page scrolls. */
+.vez-mango-peek {
+  position: fixed;
+  left: 0;
+  top: 64%;
+  z-index: 1;
+  width: clamp(120px, 16vw, 220px);
+  height: auto;
+  transform: translateX(-32%) rotate(90deg);
+  transform-origin: center;
+  pointer-events: none;
+  filter: drop-shadow(8px 6px 14px rgba(0, 0, 0, 0.12));
+  animation: vez-mango-peek-in 900ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 700ms;
+}
+
+@keyframes vez-mango-peek-in {
+  from {
+    transform: translateX(-110%) rotate(90deg);
+  }
+  to {
+    transform: translateX(-32%) rotate(90deg);
+  }
+}
+
+@media (max-width: 640px) {
+  /* On mobile, anchor him into the page (absolute, scrolls away) instead of
+     pinned to the viewport - otherwise he slides over content as you scroll. */
+  .vez-mango-peek {
+    position: absolute;
+    top: 64vh;
+    bottom: auto;
+    transform: translateX(-32%) rotate(90deg);
+  }
+  @keyframes vez-mango-peek-in {
+    from {
+      transform: translateX(-110%) rotate(90deg);
+    }
+    to {
+      transform: translateX(-32%) rotate(90deg);
+    }
+  }
+}
+
+/* On very narrow phones the hero text is taller, so 64vh drops him too far -
+   pull him back up. */
+@media (max-width: 375px) {
+  .vez-mango-peek {
+    top: 50vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vez-mango-peek {
+    animation: none;
+  }
+}
+
 /* The page-load fall-in entrance (`.vez-fall*`) lives in globals.css so every
    page can share it. The home page applies those classes explicitly (nav, hero,
    each case-study pair); other pages use the `.vez-enter` container variant. */
