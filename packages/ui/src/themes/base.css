@@ -155,3 +155,34 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* ── Phone refinements ───────────────────────────────────────────
+   On a narrow screen the desktop scale is too big: tighten the side
+   gutters, step the whole type scale down a notch so copy is legible,
+   and cap framed phone screenshots so they stop dominating the view.
+   These only re-point existing tokens, so every component that reads
+   them adapts without per-component overrides. */
+@media (max-width: 640px) {
+  :root {
+    /* Less margin at the screen edges → cards read closer to full width. */
+    --page-padding: 16px;
+
+    /* Step the type scale down so headlines and body copy actually fit. */
+    --font-size-body-small: 16px;
+    --font-size-md: 17px;
+    --font-size-lg: 20px;
+    --font-size-display-sm: 28px;
+    --font-size-display-md: 40px;
+    --font-size-display-lg: 64px;
+
+    --line-height-body: 24px;
+    --line-height-body-large: 30px;
+    --line-height-display-sm: 36px;
+    --line-height-display-md: 48px;
+    --line-height-display-lg: 70px;
+
+    /* Upper bound for framed phone screenshots (see Phone.css). Case studies
+       that scale a phone themselves opt out by raising this locally. */
+    --phone-cap: 62vw;
+  }
+}

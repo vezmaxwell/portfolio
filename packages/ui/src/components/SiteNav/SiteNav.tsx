@@ -1,4 +1,20 @@
+'use client';
+
 import './SiteNav.css';
+
+/**
+ * Same-page `#section` links: smooth-scroll to the target and keep the hash out
+ * of the address bar (replaceState with the bare path), so the URL stays clean.
+ * Plain routes (e.g. `/hello`) fall through to normal navigation.
+ */
+function handleHashClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+  if (!href.startsWith('#')) return;
+  const el = document.getElementById(href.slice(1));
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({ behavior: 'smooth' });
+  window.history.replaceState(null, '', window.location.pathname + window.location.search);
+}
 
 export interface SiteNavItem {
   label: string;
@@ -46,6 +62,7 @@ export function SiteNav({
           aria-current={active ? 'page' : undefined}
           target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
+          onClick={(e) => handleHashClick(e, item.href)}
         >
           {item.label}
         </a>

@@ -54,7 +54,7 @@ export function PicturesCinemaGuideBody() {
       <BrowserShot
         bg="var(--color-tint-1)"
         url="pictures.london"
-        src="/assets/pictures/listings.png"
+        src="/assets/pictures/listings.jpg"
         alt="The Pictures homepage: a dense, poster-led grid of today’s repertory screenings across London"
       />
 

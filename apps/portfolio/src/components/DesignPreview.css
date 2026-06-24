@@ -48,12 +48,19 @@
 .vez-floating-preview {
   animation: vez-floating-preview-float 6s ease-in-out infinite;
   display: block;
+  /* Pass the column width down the chain: without this the wrappers shrink-wrap
+     to the frame's native size, so a fluid frame's max-width:100% would resolve
+     against 540px (itself) and never actually clamp to the narrow column. */
+  max-width: 100%;
+  min-width: 0;
 }
 
 /* Owns the floating drop-shadow + the hover lift. */
 .vez-floating-preview__device {
   display: block;
   filter: drop-shadow(0 30px 30px rgba(31, 30, 46, 0.4));
+  max-width: 100%;
+  min-width: 0;
   transform-origin: center;
   transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -99,5 +106,28 @@
   .vez-floating-preview__device,
   .vez-floating-preview-link:hover .vez-floating-preview__device {
     transition: none;
+  }
+}
+
+/* ── Mobile refinements ────────────────────────────────────────
+   NB: placed at the end of the file on purpose. These share specificity
+   with the base rules above, so they must come *after* them in source
+   order to win the cascade (otherwise the 464px min-height floor sticks). */
+@media (max-width: 640px) {
+  /* Pull the stacked preview up a touch closer to its text bubble. */
+  .vez-preview-pair {
+    gap: var(--space-3);
+  }
+  /* Drop the desktop 464px floor so the frame hugs its content — otherwise a
+     short desktop screenshot is centred in a tall box and floats far below its
+     bubble, while a tall phone nearly fills it. That mismatch is what made the
+     bubble→preview distance look inconsistent between pairs. */
+  .vez-floating-preview-link {
+    min-height: 0;
+  }
+  /* These framed previews are already sized for their column; the global mobile
+     phone cap would shrink them a second time, so opt out here. */
+  .vez-floating-preview__scale {
+    --phone-cap: 9999px;
   }
 }

@@ -14,6 +14,13 @@ interface DesignPreviewProps {
   height: number;
   /** Shrink factor applied to the screen so it fits the preview. */
   scale: number;
+  /**
+   * Let the frame shrink below its native size to fit a narrow viewport (the
+   * inner screen fills 100% rather than being held at a fixed pixel width).
+   * Use for image/browser previews whose content is a `width: 100%` `<img>`;
+   * not for live prototypes that need an exact render width. Requires scale 1.
+   */
+  fluid?: boolean;
   /** The framed screen (e.g. a Phone or Browser holding a live prototype). */
   children: React.ReactNode;
 }
@@ -31,6 +38,7 @@ export function DesignPreview({
   width,
   height,
   scale,
+  fluid = false,
   children,
 }: DesignPreviewProps) {
   // The preview is a decorative, mouse-only duplicate of the sibling text-card link
@@ -50,11 +58,19 @@ export function DesignPreview({
             className="vez-floating-preview__frame"
             aria-hidden="true"
             data-theme={theme}
-            style={{ height: height * scale, width: width * scale }}
+            // Fluid: render at native width but allow shrinking to the column
+            // (max-width:100%); height flows from the content (no transform), so
+            // it stays exact at any width. Fixed: a hard width×height box that
+            // scales the screen inside it.
+            style={
+              fluid
+                ? { maxWidth: '100%', width: width * scale }
+                : { height: height * scale, width: width * scale }
+            }
           >
             <div
               className="vez-floating-preview__scale"
-              style={{ transform: `scale(${scale})`, width }}
+              style={fluid ? { width: '100%' } : { transform: `scale(${scale})`, width }}
             >
               {children}
             </div>

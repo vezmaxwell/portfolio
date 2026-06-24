@@ -16,8 +16,17 @@ interface BalloonCaseStudyProps {
   fallOrder?: number;
 }
 
+interface PreviewSpec {
+  width: number;
+  height: number;
+  scale: number;
+  /** Allow the frame to shrink below native size on narrow screens (see DesignPreview). */
+  fluid?: boolean;
+  node: React.ReactNode;
+}
+
 /** The live screen to float beside each case study, with its native size + scale. */
-function previewFor(card: CaseStudyCard) {
+function previewFor(card: CaseStudyCard): PreviewSpec | null {
   if (card.slug === 'symptom-monitoring') {
     return {
       width: 360,
@@ -38,6 +47,7 @@ function previewFor(card: CaseStudyCard) {
       width: 540,
       height: 375, // 540 × (2251 / 3240) to match the screenshot's aspect ratio
       scale: 1,
+      fluid: true, // wide desktop shot — let it shrink to fit a phone column
       node: (
         <img
           src="/assets/finity/admin-1.png"
@@ -52,6 +62,7 @@ function previewFor(card: CaseStudyCard) {
       width: 540,
       height: 396, // 540 × (2052 / 2800)
       scale: 1,
+      fluid: true, // wide desktop shot — let it shrink to fit a phone column
       node: (
         <img
           src="/assets/finity/pension-flow-1.png"
@@ -94,10 +105,11 @@ function previewFor(card: CaseStudyCard) {
       width: 540,
       height: 372, // 540 × (2858/4400) image (≈351) + the slim compact chrome bar (≈20)
       scale: 1,
+      fluid: true, // wide browser shot — let it shrink to fit a phone column
       node: (
         <Browser url="pictures.london" compact>
           <img
-            src="/assets/pictures/listings.png"
+            src="/assets/pictures/listings.jpg"
             alt="Pictures, a London repertory cinema calendar"
             style={{ display: 'block', height: 'auto', width: '100%' }}
           />
@@ -166,6 +178,7 @@ export function BalloonCaseStudy({
       width={preview.width}
       height={preview.height}
       scale={preview.scale}
+      fluid={preview.fluid}
     >
       {preview.node}
     </DesignPreview>

@@ -28,7 +28,9 @@
   display: inline-block;
   flex-shrink: 0;
   position: relative;
-  width: var(--phone-width);
+  /* --phone-cap is unset on desktop (resolves to 100vw, so --phone-width always
+     wins); on mobile base.css lowers it to shrink oversized screenshots. */
+  width: min(var(--phone-width), var(--phone-cap, 100vw));
 }
 
 .vez-phone__frame-svg {

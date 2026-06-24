@@ -20,3 +20,17 @@
 .vez-section--center {
   align-items: center;
 }
+
+/* Tighten vertical rhythm on phones — the desktop large spacing leaves a big
+   empty band above the first section (e.g. the "Howdy" hero). */
+@media (max-width: 640px) {
+  .vez-section--sm {
+    padding-block: var(--space-6);
+  }
+  .vez-section--md {
+    padding-block: var(--space-8);
+  }
+  .vez-section--lg {
+    padding-block: var(--space-8);
+  }
+}

@@ -70,3 +70,19 @@
     align-self: center;
   }
 }
+
+@media (max-width: 640px) {
+  .vez-hero__headline {
+    font-size: 44px;
+    line-height: 50px;
+  }
+  /* Case-study heroes give their media a fixed-width box (inline styles). Let it
+     shrink to the screen so a wide preview can't push out a horizontal scroll. */
+  .vez-hero__media {
+    flex-shrink: 1;
+    max-width: 100%;
+  }
+  .vez-hero__media > * {
+    max-width: 100%;
+  }
+}

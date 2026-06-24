@@ -20,6 +20,9 @@ const FLOW_SCALE = 0.52;
 const PHONE_ASPECT = 554 / 276;
 const flowPhoneStyle = {
   ['--phone-width' as string]: `${FLOW_DESIGN_WIDTH}px`,
+  // This flow scales the phone itself, so opt out of the mobile phone cap — the
+  // strip already scrolls horizontally when it overflows.
+  ['--phone-cap' as string]: '9999px',
 } as React.CSSProperties;
 
 export function SymptomMonitoringBody() {
