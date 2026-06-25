@@ -73,20 +73,25 @@ export function KareheroCareExpertScreenBody() {
             interactions count.
           </p>
           <p>
-            The problem was that the humans had nowhere good to work. Care experts were running
-            their entire workflow across multiple tools, tracking customers in Excel spreadsheets
-            opened in incognito mode, for information that already lived somewhere else in our own
-            product. Every minute spent on that admin was a minute not spent with a carer.
+            The screens here are a core feature set I designed inside the existing member app, the
+            carer&apos;s side of that relationship. Actions, Calls and Key Documents, woven into the
+            place a carer like Olivia already lives. The CAM team have the other half, an internal
+            console they run their day from. This case study stays on the member side, because that
+            is what these screens are, and because this feature set is the surface that feeds the
+            console.
           </p>
           <p>
-            This is the story of pulling that work back into the product. Building Actions, Calls
-            and Key Documents so a care expert can run a customer from one screen instead of six.
+            It started from one goal: more meaningful interactions. The CAM team are the business&apos;s
+            bread and butter, so the brief was to empower them through the product, not leave them
+            working around it. Every action a carer completes, every document they upload, every call
+            they have lands here first, and flows straight into the console. The carer gets a calmer
+            app. The care team gets live visibility into it, with no impersonation and no spreadsheet.
           </p>
         </ContentBlock>
         <PhoneCell
           bg="var(--color-tint-2)"
           src="/assets/karehero/home.png"
-          alt="The care recipient control panel"
+          alt="The carer’s home screen in the member app"
         />
       </Row>
 
@@ -116,8 +121,9 @@ export function KareheroCareExpertScreenBody() {
           <p>
             The third was a generic experience that treated every carer the same, no matter how
             different their situation. But that&apos;s a separate strand of work. This case study is
-            about the first blocker: giving the care experts a real place to work, and in doing so,
-            killing a big chunk of the repetition too.
+            about the first two: building the member side into a real, structured surface, so the
+            care team can finally work off it instead of around it, and killing a big chunk of the
+            repetition in the process.
           </p>
         </ContentBlock>
         <StatList
@@ -132,15 +138,17 @@ export function KareheroCareExpertScreenBody() {
 
       <ContentBlock tint="tint-1" title="The vision">
         <p>
-          One screen. A care expert opens a customer&apos;s control panel and is oriented in seconds,
-          not minutes. They can see the care circle, its status, its documents, its calls and the
-          follow-ups they owe. No impersonation. No spreadsheet. No hunting across tabs.
+          Make this feature set the home for the follow-up work, right inside the carer&apos;s
+          existing app. A carer opens it and sees their documents, their calls and the follow-ups
+          they owe, as a clear, tappable list. The follow-ups a care expert creates don&apos;t vanish
+          into an email the carer never opens. They land here as &ldquo;From your care expert&rdquo;,
+          so the conversation that happened on the phone actually carries on afterwards.
         </p>
         <p>
-          And the follow-ups a care expert creates don&apos;t vanish into an email the carer never
-          opens. They land in the carer&apos;s app as a clear, tappable list, &ldquo;From your care
-          expert&rdquo;, so the conversation that happened on the phone actually carries on
-          afterwards.
+          And because all of that lives on the member side, it becomes the care team&apos;s source of
+          truth too. Their internal console reads the same actions, calls and documents the carer
+          sees. No impersonation. No spreadsheet. No hunting across tabs. One surface, looked at from
+          two sides.
         </p>
       </ContentBlock>
 
@@ -207,71 +215,80 @@ export function KareheroCareExpertScreenBody() {
         </ContentBlock>
       </Row>
 
-      <ContentBlock tint="tint-1" shape="flush-left" title="Execution: the care expert side">
+      <ContentBlock tint="tint-1" shape="flush-left" title="Execution: Actions on the member side">
         <p>
-          Everything lives in cards on the care recipient control panel, in the same visual language
-          as the rest of the page. One shared &ldquo;Add&rdquo; button sits top-right. Pressing it
-          opens the action drawer directly, since actions are the primary job, and a caret reveals
-          Call notes and Document as the other options.
+          Everything lives in cards in the carer&apos;s app, in the same visual language as the rest
+          of the page. Actions get their own tab, with This Week and No date groupings and an
+          All / To do / Done filter across the top. Each card shows who it&apos;s for and who it came
+          from, so &ldquo;From Yasmin&rdquo; reads at a glance as a follow-up from their care expert.
         </p>
         <p>
-          Actions is a proper task tool. Create, edit, reassign, delete. Optional due dates. A
-          recurring toggle that auto-generates the whole series. A &ldquo;view before you
-          edit&rdquo; read mode so a care expert doesn&apos;t fat-finger someone else&apos;s care
-          plan. The container defaults to the week ahead, overdue first, then soonest due, then
-          undated. Completed actions hide by default, because the care expert gets a notification
-          when a carer ticks something off.
+          Actions is a proper task tool, not a static list. Create, edit, assign, complete. Optional
+          due dates. A recurring toggle that auto-generates the whole series. A &ldquo;view before
+          you edit&rdquo; read mode so nobody fat-fingers a care plan. The container defaults to the
+          week ahead, overdue first, then soonest due, then undated. Completed actions hide by
+          default, and the moment a carer ticks one off, their care expert is notified in the
+          console. The carer&apos;s tap is the care team&apos;s signal.
         </p>
       </ContentBlock>
 
       <PhoneRow
         bg="var(--color-tint-4)"
         screens={[
-          { src: '/assets/karehero/view-all-actions.png', alt: 'Viewing all actions for a customer' },
-          { src: '/assets/karehero/create-action.png', alt: 'Creating a single action' },
-          { src: '/assets/karehero/create-repeating-action.png', alt: 'Creating a repeating action' },
+          { src: '/assets/karehero/view-all-actions.png', alt: 'The carer’s Actions tab, with follow-ups from their care expert' },
+          { src: '/assets/karehero/create-action.png', alt: 'Creating a single action in the member app' },
+          { src: '/assets/karehero/create-repeating-action.png', alt: 'Creating a repeating action in the member app' },
         ]}
       />
 
       <ContentBlock tint="tint-2" title="Execution: calls and documents">
         <p>
-          Call notes lets a care expert log what happened after a conversation. Paste the Calendly
-          link and it pulls the call metadata in automatically, date, duration, who was on it, so
-          the notes are tied to the specific call that produced them. Free text, not a form.
+          Calls live in the carer&apos;s Care hub. Upcoming calls to book or reschedule, and past
+          calls with their summary and the actions linked to each one. The carer doesn&apos;t write
+          the summary, their care expert does it from the console after the conversation, and it
+          surfaces here against the right call (&ldquo;Your call summary will appear here, you will
+          be notified when it is ready&rdquo;). The phone call stops being a thing that happens and
+          then evaporates. It becomes a record the carer can return to.
         </p>
         <p>
           Key Documents is a simple, deliberate upload. Name, optional tags, an optional note.
-          Visible to the whole care circle. No versioning, no in-app editing. That restraint is the
-          point for V0.
+          Visible to the whole care circle, which means the moment a carer adds one, their care
+          expert has it too, no chasing over email. No versioning, no in-app editing. That restraint
+          is the point for V0.
         </p>
       </ContentBlock>
 
       <PhoneRow
         bg="var(--color-tint-3)"
         screens={[
-          { src: '/assets/karehero/calls.png', alt: 'Calls inside the Care Hub' },
-          { src: '/assets/karehero/call-summary.png', alt: 'A call summary with notes and linked actions' },
+          { src: '/assets/karehero/calls.png', alt: 'Calls in the carer’s Care hub' },
+          { src: '/assets/karehero/call-summary.png', alt: 'A call summary with linked actions, in the member app' },
         ]}
       />
 
-      <ContentBlock tint="tint-1" title="Execution: the carer side">
+      <ContentBlock tint="tint-1" shape="flush-left" title="How the member side powers the care team">
         <p>
-          The carer side is where the meaningful interaction actually lands. Actions from a care
-          expert show up in the carer&apos;s Actions tab with clear attribution and, where relevant,
-          a tappable link back to the call they came from (&ldquo;from your call on 21 April&rdquo;).
-          They can view, tap the deep-link, and mark things complete, but they can&apos;t edit or
-          delete what they didn&apos;t create.
+          This is the part that matters most, and the reason the case study sits on the member side.
+          Every one of these screens is also an input to the internal console the care team runs
+          their day from. The two halves share one data model, so the member app isn&apos;t a
+          read-only mirror of the console, it&apos;s the place a lot of the truth is actually created.
         </p>
         <p>
-          Calls get a home inside the Care Hub. Upcoming calls to book or reschedule, past calls
-          with their notes attached, and the actions linked to each one. The phone call stops being
-          a thing that happens and then evaporates. It becomes a record the carer can return to. No
-          new tab. Five tabs stay five tabs, the architecture got richer without the carer&apos;s
-          mental model getting heavier.
+          A care expert assigns a follow-up from the console and it lands in the carer&apos;s Actions
+          tab as &ldquo;From your care expert&rdquo;, with a tappable link back to the call it came
+          from. The carer completes it, and the console updates, no impersonation needed to check. The
+          carer uploads a funding document, and it&apos;s in the care circle for the team instantly.
+          The relationship that used to live in one person&apos;s inbox now lives in a shared system,
+          and the carer never sees the machinery, just five tabs that quietly got richer.
+        </p>
+        <p>
+          That&apos;s the design bet. Don&apos;t build the care team a console fed by yet another
+          round of data entry. Make the carer&apos;s own app the source, and let the console read
+          from it. Good for the carer, good for the team, one system instead of two drifting copies.
         </p>
       </ContentBlock>
 
-      <Row gap="md" align="stretch">
+      <Row gap="md" align="start">
         <ContentBlock tint="tint-3" title="Defining success">
           <p>
             This is in-flight work and being built. This is what we defined success as, and why
@@ -281,11 +298,11 @@ export function KareheroCareExpertScreenBody() {
             items={[
               {
                 heading: 'Zero impersonation for actions.',
-                body: 'Care experts create and manage every follow-up from the control panel, with no need to log in as the user to read their data.',
+                body: 'The care team reads every follow-up and its status straight from the member-side data, with no need to log in as the user.',
               },
               {
                 heading: '100% follow-up capture.',
-                body: 'Every post-call action item lands as a tracked action. Baseline today is roughly 0%, it is all informal.',
+                body: 'Every post-call action item lands as a tracked action in the carer’s app. Baseline today is roughly 0%, it is all informal.',
               },
               {
                 heading: 'Adoption as the real test.',
@@ -298,21 +315,24 @@ export function KareheroCareExpertScreenBody() {
         <ContentBlock tint="tint-2" title="Impact">
           <p>
             The point was never the features. It was the theme underneath them: meaningful
-            interactions. The engagement it was meant to drive, and the realisation that you
-            don&apos;t move a number like that by chasing it directly. You move it by removing the
-            structural things blocking it.
+            interactions. The CAM team are the business&apos;s bread and butter, the relationships
+            they hold are the product, so the goal was to empower them through the product rather
+            than leave them working around it. You don&apos;t move a number like engagement by
+            chasing it directly. You move it by removing the structural things blocking the people
+            who drive it.
           </p>
           <p>
-            Give care experts a real place to work and you hand back the capacity they were losing
-            to spreadsheets and impersonation, capacity they can spend on the carers who need them.
-            Pull follow-ups into the app and the relationship survives the end of the phone call.
-            Get the information architecture right once and three features behave like one calm
-            system instead of three noisy ones.
+            Give the care team a real surface to work from, the carer&apos;s own app, and you hand
+            back the capacity they were losing to spreadsheets and impersonation, capacity they can
+            spend on the carers who need them. Pull follow-ups into that app and the relationship
+            survives the end of the phone call. Get the information architecture right once and the
+            features behave like one calm system instead of three noisy ones.
           </p>
           <p>
             That&apos;s the work I&apos;m proudest of here: not the individual screens, but the
-            decision to stop and map how calls, actions and documents actually relate before drawing
-            a single one. The unglamorous bit is the bit that made the rest hold together.
+            decision to make the carer&apos;s app the source the CAM team are empowered by, and to
+            map how calls, actions and documents actually relate before drawing a single one. The
+            unglamorous bit is the bit that made the rest hold together.
           </p>
         </ContentBlock>
       </Row>

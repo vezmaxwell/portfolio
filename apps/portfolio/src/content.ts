@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Helping family carers navigate care, with a real human in their corner.',
     intro: [
       'KareHero connects family carers with a real human, a care expert who helps them navigate one of the hardest stretches of their life.',
-      'The care experts are the heart of the product, but they had nowhere good to work, running their whole workflow across spreadsheets and a handful of disconnected tools. This work pulls that back into the product.',
+      'What you see here is a core feature set on the member side, the carer’s actions, calls and key documents, designed to grow meaningful interactions. The CAM team work the other half from an internal console, but this feature set is what empowers them, replacing the spreadsheets and impersonation they had been running on.',
     ],
     heroImage: '/assets/karehero/hero.png',
     heroBare: true,
@@ -184,8 +184,8 @@ export const CASE_STUDIES: CaseStudyCard[] = [
   {
     slug: 'care-expert-screen',
     projectSlug: 'karehero',
-    title: 'Giving care experts one screen to run a customer from.',
-    subtitle: 'Actions, calls and key documents for those navigating care.',
+    title: 'Empowering the care team through the carer’s app.',
+    subtitle: 'A core feature set on the member side: actions, calls and key documents.',
     tags: ['Care tech', 'Mobile', 'SaaS', 'Product'],
     tint: 'tint-1',
     textSide: 'right',
