@@ -12,13 +12,6 @@ const NAV_ITEMS = [
 export default function Home() {
   return (
     <main>
-      <img
-        src="/assets/home/mango.png"
-        alt="Mango, Vez's dog, peeking in from the edge of the screen"
-        className="vez-mango-peek"
-        aria-hidden="true"
-      />
-
       <SiteNavSpy
         className="vez-fall vez-fall--nav"
         items={NAV_ITEMS}
@@ -28,7 +21,7 @@ export default function Home() {
         }
       />
 
-      <Section spacing="lg" align="center">
+      <Section spacing="md" align="center">
         <Hero
           className="vez-fall vez-fall--hero"
           headline="Howdy"
@@ -47,11 +40,20 @@ export default function Home() {
               src="/assets/home/hero.png"
               alt="Illustrated portrait of Vez dancing"
               className="vez-bob"
-              style={{ display: 'block', height: 'auto', maxWidth: '100%', width: 620 }}
+              style={{ display: 'block', height: 'auto', maxWidth: '100%', width: 460 }}
             />
           }
         />
       </Section>
+
+      <div className="vez-mango-band">
+        <img
+          src="/assets/home/mango.png"
+          alt="Mango, Vez's dog, peeking in from the edge of the screen"
+          className="vez-mango-peek"
+          aria-hidden="true"
+        />
+      </div>
 
       <Section spacing="md" id="work">
         <Container size="lg" padding="none">
